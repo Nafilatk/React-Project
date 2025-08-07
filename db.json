@@ -13,144 +13,28 @@
       "created_at": "2025-08-01T12:00:00Z"
     },
     {
-      "id": "d59434bd-c6c3-4be2-b62a-4e6ece9c8ee9",
-      "name": "nashva tk",
-      "email": "nashvatk@gmail.com",
+      "id": "89d23cf1-416b-4aa5-9515-d797e23f88e7",
+      "name": "nafila",
+      "email": "nafilatk7@gmail.com",
+      "password": "0987654321",
+      "role": "user",
+      "isBlock": false,
+      "cart": [],
+      "wishlist": [],
+      "orders": [],
+      "created_at": "2025-08-07T07:12:59.355Z"
+    },
+    {
+      "id": "b5a40c89-05db-43f5-954b-d2feea0e504b",
+      "name": "nafila tk",
+      "email": "Nafilatk7@gmail.com",
       "password": "123456",
       "role": "user",
       "isBlock": false,
-      "cart": [
-        {
-          "id": "t1",
-          "name": "Casual Cotton T-Shirt",
-          "description": "Soft and breathable cotton t-shirt perfect for daily wear.",
-          "price": 799,
-          "count": 20,
-          "category": "T-Shirts",
-          "images": [
-            "https://example.com/images/tshirt1.jpg"
-          ],
-          "isActive": true,
-          "created_at": "2025-07-01T10:00:00Z",
-          "quantity": 1
-        }
-      ],
+      "cart": [],
       "wishlist": [],
-      "orders": [
-        {
-          "id": "t1",
-          "name": "Casual Cotton T-Shirt",
-          "description": "Soft and breathable cotton t-shirt perfect for daily wear.",
-          "price": 799,
-          "count": 20,
-          "category": "T-Shirts",
-          "images": [
-            "https://example.com/images/tshirt1.jpg"
-          ],
-          "isActive": true,
-          "created_at": "2025-07-01T10:00:00Z",
-          "quantity": 1
-        },
-        {
-          "id": "t2",
-          "name": "Formal White Shirt",
-          "description": "Elegant formal shirt suitable for office or meetings.",
-          "price": 1299,
-          "count": 10,
-          "category": "Shirts",
-          "images": [
-            "https://example.com/images/formalshirt.jpg"
-          ],
-          "isActive": true,
-          "created_at": "2025-07-02T11:00:00Z",
-          "quantity": 1
-        },
-        {
-          "id": "t1",
-          "name": "Casual Cotton T-Shirt",
-          "description": "Soft and breathable cotton t-shirt perfect for daily wear.",
-          "price": 799,
-          "count": 20,
-          "category": "T-Shirts",
-          "images": [
-            "https://example.com/images/tshirt1.jpg"
-          ],
-          "isActive": true,
-          "created_at": "2025-07-01T10:00:00Z",
-          "quantity": 1
-        },
-        {
-          "id": "t1",
-          "name": "Casual Cotton T-Shirt",
-          "description": "Soft and breathable cotton t-shirt perfect for daily wear.",
-          "price": 799,
-          "count": 20,
-          "category": "T-Shirts",
-          "images": [
-            "https://example.com/images/tshirt1.jpg"
-          ],
-          "isActive": true,
-          "created_at": "2025-07-01T10:00:00Z",
-          "quantity": 1
-        },
-        {
-          "id": "t2",
-          "name": "Formal White Shirt",
-          "description": "Elegant formal shirt suitable for office or meetings.",
-          "price": 1299,
-          "count": 10,
-          "category": "Shirts",
-          "images": [
-            "https://example.com/images/formalshirt.jpg"
-          ],
-          "isActive": true,
-          "created_at": "2025-07-02T11:00:00Z",
-          "quantity": 1
-        },
-        {
-          "id": "t1",
-          "name": "Casual Cotton T-Shirt",
-          "description": "Soft and breathable cotton t-shirt perfect for daily wear.",
-          "price": 799,
-          "count": 20,
-          "category": "T-Shirts",
-          "images": [
-            "https://example.com/images/tshirt1.jpg"
-          ],
-          "isActive": true,
-          "created_at": "2025-07-01T10:00:00Z",
-          "quantity": 1
-        },
-        {
-          "id": "t2",
-          "name": "Formal White Shirt",
-          "description": "Elegant formal shirt suitable for office or meetings.",
-          "price": 1299,
-          "count": 10,
-          "category": "Shirts",
-          "images": [
-            "https://example.com/images/formalshirt.jpg"
-          ],
-          "isActive": true,
-          "created_at": "2025-07-02T11:00:00Z",
-          "quantity": 1
-        },
-        {
-          "id": "t1",
-          "name": "Casual Cotton T-Shirt",
-          "description": "Soft and breathable cotton t-shirt perfect for daily wear.",
-          "price": 799,
-          "count": 20,
-          "category": "T-Shirts",
-          "images": [
-            "https://example.com/images/tshirt1.jpg"
-          ],
-          "isActive": true,
-          "created_at": "2025-07-01T10:00:00Z",
-          "quantity": 1
-        }
-      ],
-      "created_at": "2025-08-05T06:52:36.726Z"
+      "orders": [],
+      "created_at": "2025-08-07T09:37:36.067Z"
     }
   ],
   "products": [
@@ -162,46 +46,46 @@
       "count": 20,
       "category": "T-Shirts",
       "images": [
-        "https://example.com/images/tshirt1.jpg"
+        "https://i.pinimg.com/736x/d8/e2/b4/d8e2b4f2717aa2b3cf4799a459d950d7.jpg"
       ],
       "isActive": true,
       "created_at": "2025-07-01T10:00:00Z"
     },
     {
       "id": "t2",
-      "name": "Formal White Shirt",
+      "name": "Stylish Shirt",
       "description": "Elegant formal shirt suitable for office or meetings.",
       "price": 1299,
       "count": 10,
       "category": "Shirts",
       "images": [
-        "https://example.com/images/formalshirt.jpg"
+        "https://i.pinimg.com/736x/8c/42/5d/8c425d49a79b94422629bfb38a3a0413.jpg"
       ],
       "isActive": true,
       "created_at": "2025-07-02T11:00:00Z"
     },
     {
       "id": "t3",
-      "name": "Floral Print Top",
+      "name": "Stylish Top",
       "description": "Stylish floral printed top for casual outings.",
       "price": 999,
       "count": 18,
       "category": "Tops",
       "images": [
-        "https://example.com/images/floraltop.jpg"
+        "https://i.pinimg.com/736x/70/96/16/7096160d9d3bc4805a754f90a24e4fb7.jpg"
       ],
       "isActive": true,
       "created_at": "2025-07-03T12:00:00Z"
     },
     {
       "id": "t4",
-      "name": "Black Tank Top",
+      "name": "Black Top",
       "description": "Slim-fit black tank top with stretchable fabric.",
       "price": 499,
       "count": 25,
-      "category": "Tank Tops",
+      "category": "Tops",
       "images": [
-        "https://example.com/images/tanktop.jpg"
+        "https://i.pinimg.com/736x/94/45/34/944534ea16aabbbb9cc6551d0e62a9ab.jpg"
       ],
       "isActive": true,
       "created_at": "2025-07-04T13:00:00Z"
@@ -214,7 +98,7 @@
       "count": 12,
       "category": "Jackets",
       "images": [
-        "https://example.com/images/jacket.jpg"
+        "https://i.pinimg.com/1200x/be/c7/e7/bec7e75b0c35aebfba8af15e6958146b.jpg"
       ],
       "isActive": true,
       "created_at": "2025-07-05T14:00:00Z"
@@ -225,9 +109,9 @@
       "description": "Formal top with buttoned design, ideal for work.",
       "price": 1199,
       "count": 14,
-      "category": "Formal Tops",
+      "category": "Tops",
       "images": [
-        "https://example.com/images/formaltop.jpg"
+        "https://i.pinimg.com/1200x/64/eb/4d/64eb4d69346a3a47f5ae2af45e0a5d78.jpg"
       ],
       "isActive": true,
       "created_at": "2025-07-06T15:00:00Z"
@@ -238,9 +122,9 @@
       "description": "Formal dress with a modern business touch.",
       "price": 2099,
       "count": 7,
-      "category": "Formal Dresses",
+      "category": "Casual Dresses",
       "images": [
-        "https://example.com/images/formaldress.jpg"
+        "https://i.pinimg.com/736x/15/87/a3/1587a3cada4bed2e620b87de426dc716.jpg"
       ],
       "isActive": true,
       "created_at": "2025-07-07T16:00:00Z"
@@ -251,12 +135,181 @@
       "description": "Chic boho style top perfect for casual hangouts.",
       "price": 899,
       "count": 17,
-      "category": "Casual Wear",
+      "category": "Casual Dresses",
       "images": [
-        "https://example.com/images/bohotop.jpg"
+        "https://i.pinimg.com/1200x/ff/9b/6e/ff9b6eb065494ee98168dd0bc9867ab5.jpg"
       ],
       "isActive": true,
       "created_at": "2025-07-08T17:00:00Z"
+    },
+    {
+      "id": "t9",
+      "name": "Boho Casual Wear Top",
+      "description": "Chic boho style top perfect for casual hangouts.",
+      "price": 899,
+      "count": 17,
+      "category": "Casual Dresses",
+      "images": [
+        "https://i.pinimg.com/1200x/d5/ed/a1/d5eda1aacac10c6f191d09cf997092e2.jpg"
+      ],
+      "isActive": true,
+      "created_at": "2025-07-08T17:00:00Z"
+    },
+    {
+      "id": "t10",
+      "name": "Denim Jacket",
+      "description": "Classic blue denim jacket for a bold look.",
+      "price": 1699,
+      "count": 12,
+      "category": "Jackets",
+      "images": [
+        "https://i.pinimg.com/1200x/f4/9f/49/f49f490332ec32c30ccf6fd8fc4e5835.jpg"
+      ],
+      "isActive": true,
+      "created_at": "2025-07-05T14:00:00Z"
+    },
+    {
+      "id": "t11",
+      "name": "Casual Wear Top",
+      "description": "Chic boho style top perfect for casual hangouts.",
+      "price": 899,
+      "count": 17,
+      "category": "Casual Dresses",
+      "images": [
+        "https://i.pinimg.com/736x/b7/08/65/b70865d528533ab8e934a486dabc36d5.jpg"
+      ],
+      "isActive": true,
+      "created_at": "2025-07-08T17:00:00Z"
+    },
+    {
+      "id": "t12",
+      "name": "Casual Wear Top",
+      "description": "Chic boho style top perfect for casual hangouts.",
+      "price": 899,
+      "count": 17,
+      "category": "Casual Dresses",
+      "images": [
+        "https://i.pinimg.com/736x/5a/05/b6/5a05b6e06e1cf26b17b95eff818df7d5.jpg"
+      ],
+      "isActive": true,
+      "created_at": "2025-07-08T17:00:00Z"
+    },
+    {
+      "id": "t13",
+      "name": "Casual Cotton T-Shirt",
+      "description": "Soft and breathable cotton t-shirt perfect for daily wear.",
+      "price": 799,
+      "count": 20,
+      "category": "T-Shirts",
+      "images": [
+        "https://i.pinimg.com/1200x/c3/2b/88/c32b885c89a588c48d39dd7e731eed62.jpg"
+      ],
+      "isActive": true,
+      "created_at": "2025-07-01T10:00:00Z"
+    },
+    {
+      "id": "t14",
+      "name": "Casual Cotton T-Shirt",
+      "description": "Soft and breathable cotton t-shirt perfect for daily wear.",
+      "price": 799,
+      "count": 20,
+      "category": "T-Shirts",
+      "images": [
+        "https://i.pinimg.com/736x/7e/3f/cc/7e3fcce21dba59e77aab1815f48ce94f.jpg"
+      ],
+      "isActive": true,
+      "created_at": "2025-07-01T10:00:00Z"
+    },
+    {
+      "id": "t15",
+      "name": "Casual Cotton T-Shirt",
+      "description": "Soft and breathable cotton t-shirt perfect for daily wear.",
+      "price": 799,
+      "count": 20,
+      "category": "T-Shirts",
+      "images": [
+        "https://i.pinimg.com/1200x/53/36/67/5336676baccaa1f8f5a4daceef85b83d.jpg"
+      ],
+      "isActive": true,
+      "created_at": "2025-07-01T10:00:00Z"
+    },
+    {
+      "id": "t16",
+      "name": "Formal Top",
+      "description": "Formal top with buttoned design, ideal for work.",
+      "price": 1199,
+      "count": 14,
+      "category": "Tops",
+      "images": [
+        "https://i.pinimg.com/1200x/17/5b/4a/175b4a985e5c94d173be449155cc1a5f.jpg"
+      ],
+      "isActive": true,
+      "created_at": "2025-07-06T15:00:00Z"
+    },
+    {
+      "id": "t17",
+      "name": "Denim Jacket",
+      "description": "Classic blue denim jacket for a bold look.",
+      "price": 1699,
+      "count": 12,
+      "category": "Jackets",
+      "images": [
+        "https://i.pinimg.com/736x/bf/a4/7d/bfa47d564ad45c45bc2a9dcf5f3ff39f.jpg"
+      ],
+      "isActive": true,
+      "created_at": "2025-07-05T14:00:00Z"
+    },
+    {
+      "id": "t18",
+      "name": "Stylish Shirt",
+      "description": "Elegant formal shirt suitable for office or meetings.",
+      "price": 1299,
+      "count": 10,
+      "category": "Shirts",
+      "images": [
+        "https://i.pinimg.com/1200x/de/71/3c/de713cd72ad7fe7ff1d3df4ace8e2f79.jpg"
+      ],
+      "isActive": true,
+      "created_at": "2025-07-02T11:00:00Z"
+    },
+    {
+      "id": "t19",
+      "name": "Stylish Shirt",
+      "description": "Elegant formal shirt suitable for office or meetings.",
+      "price": 1299,
+      "count": 10,
+      "category": "Shirts",
+      "images": [
+        "https://i.pinimg.com/1200x/77/e4/4c/77e44cea54192d0290c4d037595515ac.jpg"
+      ],
+      "isActive": true,
+      "created_at": "2025-07-02T11:00:00Z"
+    },
+    {
+      "id": "t20",
+      "name": "Denim Jacket",
+      "description": "Classic blue denim jacket for a bold look.",
+      "price": 1699,
+      "count": 12,
+      "category": "Jackets",
+      "images": [
+        "https://i.pinimg.com/736x/9f/90/c7/9f90c76587ed244a3910861cf6ff8317.jpg"
+      ],
+      "isActive": true,
+      "created_at": "2025-07-05T14:00:00Z"
+    },
+    {
+      "id": "t21",
+      "name": "Stylish Shirt",
+      "description": "Elegant formal shirt suitable for office or meetings.",
+      "price": 1299,
+      "count": 10,
+      "category": "Shirts",
+      "images": [
+        "https://i.pinimg.com/1200x/c8/bb/fe/c8bbfec3ad15891ee0018a432f431e1d.jpg"
+      ],
+      "isActive": true,
+      "created_at": "2025-07-02T11:00:00Z"
     }
   ]
 }

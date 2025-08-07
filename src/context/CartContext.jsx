@@ -108,6 +108,7 @@ export const CartProvider = ({ children }) => {
         incrementQty,
         decrementQty,
         totalPrice,
+        
       }}
     >
       {children}

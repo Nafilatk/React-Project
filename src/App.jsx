@@ -3,17 +3,19 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import ProtectedRoute from "./components/ProtectedRoute";
 
+import "@fortawesome/fontawesome-free/css/all.min.css";
+
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Products from "./pages/Products";
 import ProductDetails from "./pages/ProductDetails";
 import Wishlist from "./pages/Wishlist";
 import Cart from "./pages/Cart";
-import Checkout from "./pages/Checkout"; // ✅ Fixed spelling here
+import Checkout from "./pages/Checkout";
 import Orders from "./pages/Orders";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
-import Success from "./pages/Success"; // ✅ Success page route added
+import Success from "./pages/Success";
 
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -33,8 +35,8 @@ const App = () => {
             <Route path="/product/:id" element={<ProductDetails />} />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
-            <Route path="/success" element={<Success />} /> {/* ✅ Success route */}
-
+            <Route path="/success" element={<Success />} />
+            
             {/* Protected Routes */}
             <Route
               path="/wishlist"

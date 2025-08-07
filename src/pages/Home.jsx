@@ -2,54 +2,104 @@ import { Link } from "react-router-dom";
 
 const Home = () => {
   return (
-    <div className="bg-white text-gray-800">
-      {/* 🟣 Hero Section */}
-      <section className="bg-pink-100 py-16 px-6 text-center ">
-        <h1 className="text-4xl md:text-5xl font-bold text-pink-700 mb-4">Welcome to GlamCart</h1>
-        <p className="text-lg md:text-xl mb-6">
-          Discover trendy & elegant women’s tops for every mood & occasion.
-        </p>
-        <Link
-          to="/products"
-          className="inline-block bg-pink-600 text-white px-6 py-2 rounded hover:bg-pink-700 transition"
-        >
-          Shop Now
-        </Link>
+    <div className=" text-[#cbc0b2]">
+      {/* Hero Section */}
+      <section
+        className="relative h-[90vh] flex flex-col justify-center items-left text-left px-6 bg-cover bg-center "
+        style={{
+          backgroundImage:
+            "url('https://i.pinimg.com/1200x/10/43/9c/10439ccfe99970caa1e955ac5a2be50a.jpg')",
+          backgroundSize: "100% auto",
+          
+        }}
+      >
+        
+        <div className="absolute inset-0 bg-[#181817]/70 z-0" />
+        <div className="relative z-10">
+          <h1 className="text-5xl md:text-6xl font-bold mb-4 drop-shadow pb-4.5">
+            Style Your Mind
+          </h1>
+          <p className="text-xl md:text-2xl mb-6 text-[#cbc0b2] pb-4.5">
+            Discover earthy tones & timeless style in women's fashion.
+          </p>
+          <Link
+            to="/products"
+            className="bg-[#550b14] hover:bg-[#7e6961] text-[#cbc0b2] px-8 py-3 rounded-full transition duration-300 pb-4.5"
+          >
+            Shop Now
+          </Link>
+        </div>
       </section>
-
-      {/* 🟣 Categories Section */}
-      <section className="py-10 px-6 max-w-6xl mx-auto">
-        <h2 className="text-2xl font-bold text-center mb-6 text-pink-600">Featured Categories</h2>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-          {["T-Shirts", "Tops", "Tank Tops", "Jackets"].map((cat, i) => (
-            <div key={i} className="bg-pink-50 py-6 rounded shadow hover:shadow-lg transition">
-              <p className="text-lg font-semibold text-pink-700">{cat}</p>
+      {/* Categories */}
+      <section className="py-20 px-6 bg-[#7e6961] text-[#cbc0b2]">
+        <h2 className="text-3xl font-bold text-center mb-10">
+          Shop by Category
+        </h2>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-6xl mx-auto">
+          {["T-Shirts", "Shirts", "Tops", "Jackets"].map((cat) => (
+            <div
+              key={cat}
+              className="bg-[#181817] hover:bg-[#550b14] transition p-6 rounded-xl shadow-lg text-center cursor-pointer"
+            >
+              <p className="text-xl font-semibold">{cat}</p>
             </div>
           ))}
         </div>
       </section>
 
-      {/* 🟣 About Section */}
-      <section className="py-12 px-6 bg-gray-100">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-2xl font-bold mb-4 text-pink-600">Why GlamCart?</h2>
-          <p className="text-gray-700 text-md leading-relaxed">
-            GlamCart is your one-stop fashion destination for modern women’s topwear.
-            From casual crop tops to formal blouses and trendy jackets, we bring you
-            hand-picked collections made with love and comfort. ✨
-          </p>
-        </div>
+      {/* Best Sellers */}
+      <section
+        className="relative h-[70vh] flex flex-col justify-center items-center text-center px-6 bg-cover bg-center"
+        style={{
+          backgroundImage:
+            "url('https://i.pinimg.com/1200x/5a/c7/bd/5ac7bd64e027c9d6a329d4f849105c28.jpg')",
+          backgroundSize: "100% auto",
+        }}
+      >
+{/*        
+          <Link 
+            to="/products"
+            className="bg-[#550b14] hover:bg-[#7e6961] text-[#cbc0b2] px-8 py-3 rounded-full transition duration-300 "
+          >
+            Shop Now
+          </Link> */}
+        
       </section>
 
-      {/* 🟣 Call to Action */}
-      <section className="py-10 px-6 text-center">
-        <h3 className="text-xl font-semibold mb-3">Don’t miss out on new arrivals!</h3>
-        <Link
-          to="/products"
-          className="bg-pink-600 text-white px-6 py-2 rounded hover:bg-pink-700 transition"
-        >
-          Explore Products
-        </Link>
+      {/* Connect With Us Section */}
+      <section className="py-20 px-6 bg-[#cbc0b2] text-[#181817] text-center">
+        <h3 className="text-2xl font-bold mb-6">Connect With Us</h3>
+        <p className="mb-8">Stay in touch for updates, offers, and nature-inspired fashion.</p>
+        
+        <div className="flex justify-center gap-6 flex-wrap">
+          {/* Instagram */}
+          <a
+            href="https://www.instagram.com/nafilaeaa?igsh=b3hhOWg5ZXIzMnFu"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-[#550b14] hover:bg-[#7e6961] text-[#cbc0b2] px-6 py-3 rounded-full transition flex items-center gap-2"
+          >
+            <i className="fab fa-instagram"></i> Instagram
+          </a>
+
+          {/* WhatsApp */}
+          <a
+            href="https://wa.me/918113854750"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-[#550b14] hover:bg-[#7e6961] text-[#cbc0b2] px-6 py-3 rounded-full transition flex items-center gap-2"
+          >
+            <i className="fab fa-whatsapp"></i> WhatsApp
+          </a>
+
+          {/* Email */}
+          <a
+            href="mailto:nafilatk7@gmail.com"
+            className="bg-[#550b14] hover:bg-[#7e6961] text-[#cbc0b2] px-6 py-3 rounded-full transition flex items-center gap-2"
+          >
+            <i className="fas fa-envelope"></i> Email
+          </a>
+        </div>
       </section>
     </div>
   );

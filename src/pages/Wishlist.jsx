@@ -1,19 +1,21 @@
-import React, { useContext } from "react";
+import React, { useContext, useCallback } from "react";
 import { WishlistContext } from "../context/WishlistContext";
 import { CartContext } from "../context/CartContext";
 import { AuthContext } from "../context/AuthContext";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { FiShoppingBag, FiTrash2, FiHeart } from "react-icons/fi";
+import { motion, AnimatePresence } from "framer-motion";
 
 const Wishlist = () => {
-  const { user, isLoading } = useContext(AuthContext); // ✅ use isLoading also
-  const { wishlist, setWishlist, removeFromWishlist } = useContext(WishlistContext);
-  const { cart, setCart } = useContext(CartContext);
+  const { user, isLoading } = useContext(AuthContext);
+  const { wishlist, removeFromWishlist } = useContext(WishlistContext);
+  const { setCart } = useContext(CartContext);
   const navigate = useNavigate();
 
-  const handleMoveToCart = async (product) => {
-    if (isLoading) return; // ⏳ Wait for user to load
+  const handleMoveToCart = useCallback(async (product) => {
+    if (isLoading) return;
 
     if (!user) {
       toast.warn("Please login to add to cart");
@@ -24,77 +26,173 @@ const Wishlist = () => {
     try {
       const res = await axios.get(`http://localhost:5000/users/${user.id}`);
       const currentCart = res.data.cart || [];
-      const currentWishlist = res.data.wishlist || [];
-
-      const alreadyInCart = currentCart.find((item) => item.id === product.id);
-      if (alreadyInCart) {
+      
+      if (currentCart.some(item => item.id === product.id)) {
         toast.info("Item already in cart");
         return;
       }
 
       const updatedCart = [...currentCart, { ...product, quantity: 1 }];
-      const updatedWishlist = currentWishlist.filter((item) => item.id !== product.id);
-
-      // ✅ Update backend
       await axios.patch(`http://localhost:5000/users/${user.id}`, {
         cart: updatedCart,
-        wishlist: updatedWishlist,
+        wishlist: wishlist.filter(item => item.id !== product.id),
       });
 
-      // ✅ Update UI states
       setCart(updatedCart);
-      setWishlist(updatedWishlist);
-
-      toast.success("Moved to cart");
+      removeFromWishlist(product.id);
+      toast.success(`${product.name} moved to cart!`);
     } catch (err) {
-      console.error("Failed to move to cart", err);
-      toast.error("Something went wrong");
+      toast.error("Failed to move to cart");
     }
-  };
+  }, [user, isLoading, wishlist, setCart, removeFromWishlist, navigate]);
 
-  if (isLoading) {
-    return <div className="text-center py-10 text-gray-500">Loading...</div>; // optional loading message
-  }
+  const handleProductClick = useCallback((productId) => {
+    navigate(`/product/${productId}`);
+  }, [navigate]);
+
+  if (isLoading) return (
+    <motion.div 
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      className="min-h-[50vh] bg-[#cbc0b2] flex items-center justify-center"
+    >
+      <motion.div
+        animate={{ scale: [1, 1.1, 1] }}
+        transition={{ repeat: Infinity, duration: 1.5 }}
+        className="animate-pulse text-[#550b14] text-xl"
+      >
+        Loading your wishlist...
+      </motion.div>
+    </motion.div>
+  );
 
   return (
-    <div className="max-w-6xl mx-auto px-4 py-10">
-      <h2 className="text-2xl font-bold text-pink-600 mb-6">My Wishlist</h2>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.5 }}
+      className="min-h-screen bg-[#cbc0b2] py-8 px-4 sm:px-6 lg:px-8"
+    >
+      <div className="max-w-7xl mx-auto">
+        <motion.div
+          initial={{ y: -20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          className="text-center mb-8"
+        >
+          <h1 className="text-2xl md:text-3xl font-bold text-[#550b14] mb-3">
+            Your Wishlist
+          </h1>
+          <motion.div
+            initial={{ scaleX: 0 }}
+            animate={{ scaleX: 1 }}
+            transition={{ duration: 0.5 }}
+            className="w-16 h-1 bg-[#970112] mx-auto"
+          />
+        </motion.div>
 
-      {wishlist.length === 0 ? (
-        <p className="text-gray-500">Your wishlist is empty.</p>
-      ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-          {wishlist.map((product) => (
-            <div key={product.id} className="bg-white border rounded shadow p-4">
-              <img
-                src={product.images[0]}
-                alt={product.name}
-                className="w-full h-48 object-cover rounded mb-3"
-              />
-              <h3 className="text-lg font-semibold text-pink-700">{product.name}</h3>
-              <p className="text-gray-500">{product.category}</p>
-              <p className="font-bold text-pink-600 mb-3">₹{product.price}</p>
+        <AnimatePresence>
+          {wishlist.length === 0 ? (
+            <motion.div
+              key="empty-wishlist"
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              className="bg-[#181817] rounded-lg p-8 text-center max-w-md mx-auto"
+            >
+              <motion.div
+                animate={{ scale: [1, 1.1, 1] }}
+                transition={{ repeat: Infinity, duration: 2 }}
+              >
+                <FiHeart className="mx-auto text-4xl text-[#7e6961] mb-4" />
+              </motion.div>
+              <h3 className="text-lg text-[#cbc0b2] mb-2">Your wishlist is empty</h3>
+              <p className="text-[#7e6961] mb-4">Save your favorite items here for later</p>
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={() => navigate('/products')}
+                className="bg-[#550b14] hover:bg-[#7e6961] text-[#cbc0b2] px-4 py-2 rounded-md transition-colors text-sm"
+              >
+                Browse Products
+              </motion.button>
+            </motion.div>
+          ) : (
+            <motion.div
+              key="wishlist-items"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ staggerChildren: 0.1 }}
+              className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"
+            >
+              {wishlist.map((product) => (
+                <motion.div
+                  key={product.id}
+                  layout
+                  initial={{ y: 20, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  whileHover={{ y: -5 }}
+                  className="bg-[#181817] rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-all group border border-[#7e6961]/20"
+                >
+                  {/* Product Image */}
+                  <motion.div 
+                    whileHover={{ scale: 1.05 }}
+                    className="relative aspect-square overflow-hidden cursor-pointer"
+                    onClick={() => handleProductClick(product.id)}
+                  >
+                    <img
+                      src={product.images[0]}
+                      alt={product.name}
+                      className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                  </motion.div>
 
-              <div className="flex gap-3">
-                <button
-                  onClick={() => handleMoveToCart(product)}
-                  className="bg-pink-600 text-white px-3 py-1 rounded hover:bg-pink-700 text-sm"
-                >
-                  Move to Cart
-                </button>
-                <button
-                  onClick={() => removeFromWishlist(product.id)}
-                  className="border border-pink-600 text-pink-600 px-3 py-1 rounded text-sm"
-                >
-                  Remove
-                </button>
-              </div>
-            </div>
-          ))}
-        </div>
-      )}
-    </div>
+                  {/* Product Info */}
+                  <div className="p-3">
+                    <h3 
+                      className="text-md font-semibold text-[#cbc0b2] mb-1 truncate cursor-pointer"
+                      onClick={() => handleProductClick(product.id)}
+                    >
+                      {product.name}
+                    </h3>
+                    <p className="text-xs text-[#7e6961] italic mb-1">{product.category}</p>
+                    <p className="text-lg font-bold text-[#970112] mb-2">₹{product.price}</p>
+
+                    {/* Action Buttons */}
+                    <div className="flex gap-2">
+                      <motion.button
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          handleMoveToCart(product);
+                        }}
+                        className="flex-1 bg-[#550b14] hover:bg-[#7e6961] text-[#cbc0b2] py-1 px-2 rounded-md text-xs flex items-center justify-center gap-1 transition-colors"
+                      >
+                        <FiShoppingBag size={14} /> Add to Cart
+                      </motion.button>
+                      <motion.button
+                        whileHover={{ scale: 1.1 }}
+                        whileTap={{ scale: 0.9 }}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          removeFromWishlist(product.id);
+                        }}
+                        className="w-8 h-8 flex items-center justify-center border border-[#7e6961] text-[#7e6961] hover:bg-[#550b14] hover:border-[#550b14] hover:text-[#cbc0b2] rounded-md transition-colors"
+                        aria-label="Remove from wishlist"
+                      >
+                        <FiTrash2 size={14} />
+                      </motion.button>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
+    </motion.div>
   );
 };
 
-export default Wishlist;
+export default React.memo(Wishlist);
