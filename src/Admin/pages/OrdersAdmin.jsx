@@ -30,12 +30,10 @@ const OrdersAdmin = () => {
     fetchUsers();
   }, []);
 
-  // Toggle dropdown for user
   const toggleUser = (userId) => {
     setOpenUser(openUser === userId ? null : userId);
   };
 
-  // Update order status in DB
   const updateOrderStatus = async (userId, orderId, newStatus) => {
     try {
       const user = users.find((u) => u.id === userId);
@@ -90,7 +88,6 @@ const OrdersAdmin = () => {
                 key={user.id}
                 className="border rounded-lg overflow-hidden shadow-sm bg-white"
               >
-                {/* User Header */}
                 <div
                   onClick={() => toggleUser(user.id)}
                   className="p-4 flex justify-between items-center cursor-pointer"
@@ -118,7 +115,6 @@ const OrdersAdmin = () => {
                   </div>
                 </div>
 
-                {/* Dropdown Orders */}
                 {openUser === user.id && (
                   <div className="p-4" >
                     {user.orders && user.orders.length > 0 ? (

@@ -27,7 +27,6 @@ const ProductsAdmin = () => {
     isActive: true
   });
 
-  // Fetch products
   const fetchProducts = async () => {
     try {
       const res = await axios.get('http://localhost:5000/products');
@@ -130,7 +129,6 @@ const ProductsAdmin = () => {
         </button>
       </div>
 
-      {/* Add/Edit Form */}
       {editingId && (
         <div className="p-5 rounded-lg shadow mb-5" style={{ 
           backgroundColor: colors.card,
@@ -271,7 +269,6 @@ const ProductsAdmin = () => {
         </div>
       )}
 
-      {/* Products Table */}
       {loading ? (
         <div className="flex justify-center items-center h-48">
           <div 

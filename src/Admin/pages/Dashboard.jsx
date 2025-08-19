@@ -6,23 +6,21 @@ import { FiUsers, FiShoppingBag, FiDollarSign } from 'react-icons/fi';
 const Dashboard = () => {
   const colors = {
     primary: "#0B2B26",   
-    secondary: "#1A5347", // Medium teal
-    accent: "#8EB69B",    // Light green
-    highlight: "#DAF1DE", // Mint
-    background: "#F5F5F5",// Light gray
-    card: "#FFFFFF",      // White
-    textDark: "#383832",  // Dark text
-    textLight: "#FFFFFF"  // Light text
+    secondary: "#1A5347", 
+    accent: "#8EB69B",    
+    highlight: "#DAF1DE", 
+    background: "#F5F5F5",
+    card: "#FFFFFF",      
+    textDark: "#383832",  
+    textLight: "#FFFFFF"  
   };
 
-  // State for data
   const [users, setUsers] = useState([]);
   const [products, setProducts] = useState([]);
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  // Fetch data from JSON Server
   const fetchData = async () => {
     try {
       const [usersRes, productsRes] = await Promise.all([
@@ -32,7 +30,6 @@ const Dashboard = () => {
       setUsers(usersRes.data);
       setProducts(productsRes.data);
 
-      // Collect orders from all users
       const allOrders = usersRes.data.flatMap(user => user.orders || []);
       setOrders(allOrders);
 
@@ -49,10 +46,8 @@ const Dashboard = () => {
     return () => clearInterval(interval);
   }, []);
 
-  // Calculate stats
   const totalRevenue = orders.reduce((sum, order) => sum + (order.total || 0), 0);
 
-  // Prepare monthly revenue data
   const monthlyRevenue = Array(12).fill(0);
   orders.forEach(order => {
     if (order.date) {
@@ -118,10 +113,8 @@ const Dashboard = () => {
       }}>
         Dashboard Overview
       </h1>
-      
-      {/* Stats Grid */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-        {/* Users Card */}
+
         <div className="bg-white rounded-xl shadow-sm p-6" style={{ borderLeft: `4px solid ${colors.primary}` }}>
           <div className="flex justify-between items-start">
             <div>
@@ -135,7 +128,6 @@ const Dashboard = () => {
           </div>
         </div>
 
-        {/* Products Card */}
         <div className="bg-white rounded-xl shadow-sm p-6" style={{ borderLeft: `4px solid ${colors.accent}` }}>
           <div className="flex justify-between items-start">
             <div>
@@ -149,7 +141,6 @@ const Dashboard = () => {
           </div>
         </div>
 
-        {/* Revenue Card */}
         <div className="bg-white rounded-xl shadow-sm p-6" style={{ borderLeft: `4px solid ${colors.secondary}` }}>
           <div className="flex justify-between items-start">
             <div>
@@ -164,7 +155,6 @@ const Dashboard = () => {
         </div>
       </div>
 
-      {/* Revenue Chart */}
       <div style={{
         backgroundColor: colors.card,
         padding: '20px',
@@ -217,73 +207,6 @@ const Dashboard = () => {
         </div>
       </div>
 
-      {/* Recent Users */}
-      <div style={{
-        backgroundColor: colors.card,
-        padding: '20px',
-        borderRadius: '8px',
-        boxShadow: '0 2px 8px rgba(0,0,0,0.05)'
-      }}>
-        <h2 style={{
-          fontSize: '18px',
-          fontWeight: '600',
-          marginBottom: '16px',
-          color: colors.primary
-        }}>
-          Recent Users
-        </h2>
-        <div style={{ overflowX: 'auto' }}>
-          <table style={{ width: '100%', borderCollapse: 'collapse' }}>
-            <thead>
-              <tr style={{ 
-                backgroundColor: colors.highlight,
-                textAlign: 'left'
-              }}>
-                <th style={{ 
-                  padding: '12px 16px',
-                  fontSize: '14px',
-                  fontWeight: '500',
-                  color: colors.primary
-                }}>
-                  Name
-                </th>
-                <th style={{ 
-                  padding: '12px 16px',
-                  fontSize: '14px',
-                  fontWeight: '500',
-                  color: colors.primary
-                }}>
-                  Email
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              {users.slice(0, 5).map(user => (
-                <tr 
-                  key={user.id} 
-                  style={{ 
-                    borderBottom: `1px solid ${colors.highlight}`,
-                    transition: 'background-color 0.2s'
-                  }}
-                >
-                  <td style={{ 
-                    padding: '12px 16px',
-                    color: colors.textDark
-                  }}>
-                    {user.name}
-                  </td>
-                  <td style={{ 
-                    padding: '12px 16px',
-                    color: colors.textDark
-                  }}>
-                    {user.email}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      </div>
     </div>
   );
 };
