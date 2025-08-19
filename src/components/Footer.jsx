@@ -11,7 +11,6 @@ const Footer = () => {
   return (
     <footer className={`bg-[${colors.dark}] text-[${colors.light}] text-sm `}>
       <div className="max-w-6xl mx-auto px-4 py-8 grid grid-cols-1 md:grid-cols-3 gap-8">
-        {/* Column 1 - Brand Info */}
         <div>
           <h2 className={`text-lg font-semibold text-[${colors.primary}] mb-3`}>GlamCart</h2>
           <p className={`text-[${colors.secondary}]`}>
@@ -19,7 +18,6 @@ const Footer = () => {
           </p>
         </div>
 
-        {/* Column 2 - Quick Links */}
         <div>
           <h3 className={`font-semibold mb-3 text-[${colors.primary}]`}>Quick Links</h3>
           <ul className="space-y-2">
@@ -66,7 +64,6 @@ const Footer = () => {
           </ul>
         </div>
 
-        {/* Column 3 - Contact Info */}
         <div>
           <h3 className={`font-semibold mb-3 text-[${colors.primary}]`}>Contact Us</h3>
           <div className={`space-y-2 text-[${colors.secondary}]`}>
@@ -77,7 +74,6 @@ const Footer = () => {
         </div>
       </div>
 
-      {/* Copyright Section */}
       <div className={`text-center py-4 border-t border-[${colors.secondary}]/30`}>
         <p className={`text-[${colors.secondary}]`}>
           &copy; {new Date().getFullYear()} GlamCart. All rights reserved.

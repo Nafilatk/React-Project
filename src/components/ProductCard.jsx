@@ -5,12 +5,13 @@ import { WishlistContext } from "../context/WishlistContext";
 import { AuthContext } from "../context/AuthContext";
 import { toast } from "react-toastify";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
+import { motion } from "framer-motion";
 
 const ProductCard = ({ product, onAddToCart }) => {
   const navigate = useNavigate();
   const { user, isLoading } = useContext(AuthContext);
   const { addToWishlist, removeFromWishlist, wishlist } = useContext(WishlistContext);
-  const { addToCart } = useContext(CartContext); // Added cart context usage
+  const { addToCart } = useContext(CartContext); 
 
   const isInWishlist = wishlist?.some((item) => item.id === product.id);
 
@@ -27,13 +28,12 @@ const ProductCard = ({ product, onAddToCart }) => {
     }
     
     try {
-      // Use either the passed onAddToCart prop or the context's addToCart
       if (onAddToCart) {
         await onAddToCart(product);
       } else if (addToCart) {
         await addToCart(product);
       }
-      toast.success(`${product.name} added to cart`);
+      // toast.success(`${product.name} added to cart`);
     } catch (error) {
       toast.error("Failed to add item to cart");
       console.error("Add to cart error:", error);
@@ -51,10 +51,10 @@ const ProductCard = ({ product, onAddToCart }) => {
     try {
       if (isInWishlist) {
         await removeFromWishlist(product.id);
-        toast.info("Removed from wishlist");
+        // toast.info("Removed from wishlist");
       } else {
         await addToWishlist(product);
-        toast.success("Added to wishlist");
+        // toast.success("Added to wishlist");
       }
     } catch (error) {
       toast.error("Failed to update wishlist");
@@ -63,73 +63,90 @@ const ProductCard = ({ product, onAddToCart }) => {
   };
 
   return (
-    <div 
-      className="bg-[#181817] rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 group relative h-full flex flex-col border border-[#7e6961]/30 cursor-pointer"
+    <motion.div 
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      whileHover={{ 
+        y: -5,
+        transition: { duration: 0.2 }
+      }}
+      className="bg-[#F8F4E9] rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 group relative h-full flex flex-col border border-[#D2B48C] cursor-pointer"
       onClick={handleCardClick}
     >
-      {/* Sale Badge */}
       {product.onSale && (
-        <div className="absolute top-3 left-3 bg-[#550b14] text-[#cbc0b2] px-3 py-1 rounded-full text-xs font-bold z-10 animate-pulse">
+        <div className="absolute top-3 left-0 bg-[#800020] text-[#F8F4E9] px-2 py-1 text-xs font-medium tracking-wider z-10">
+          <div className="absolute left-0 bottom-[-6px] w-0 h-0 border-l-[6px] border-l-transparent border-t-[6px] border-t-[#600018]"></div>
           SALE
         </div>
       )}
 
-      {/* Product Image */}
-      <div className="relative overflow-hidden aspect-square">
-        <img
+      <div className="relative overflow-hidden aspect-square bg-[#F8F4E9]">
+        <motion.img
           src={product.images[0]}
           alt={product.name}
-          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
           loading="lazy"
+          initial={{ scale: 1 }}
+          whileHover={{ scale: 1.05 }}
+          transition={{ duration: 0.3 }}
         />
-        {/* Wishlist Button */}
-        <button
+        
+        <motion.button
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
           onClick={handleWishlist}
-          className={`absolute top-3 right-3 p-2 rounded-full shadow-md transition-all duration-300 ${
+          className={`absolute top-2 right-2 p-1.5 rounded-full ${
             isInWishlist 
-              ? "bg-[#550b14] text-[#cbc0b2]"
-              : "bg-[#cbc0b2]/90 text-[#7e6961] hover:bg-[#550b14] hover:text-[#cbc0b2]"
+              ? "bg-[#800020] text-[#F8F4E9]"
+              : "bg-[#F8F4E9] text-[#D2B48C] hover:bg-[#800020] hover:text-[#F8F4E9]"
           }`}
           aria-label={isInWishlist ? "Remove from wishlist" : "Add to wishlist"}
         >
           {isInWishlist ? (
-            <AiFillHeart size={20} className="text-current" />
+            <AiFillHeart size={18} className="text-current" />
           ) : (
-            <AiOutlineHeart size={20} className="text-current" />
+            <AiOutlineHeart size={18} className="text-current" />
           )}
-        </button>
+        </motion.button>
       </div>
 
-      {/* Product Info */}
-      <div className="p-5 flex-grow flex flex-col">
-        <div className="mb-3">
-          <h3 className="text-lg font-bold text-[#cbc0b2] line-clamp-2 min-h-[3rem]">
+      {/* Product Info - Compact Layout */}
+      <div className="p-3 flex-grow flex flex-col">
+        <div className="mb-2">
+          <h3 className="text-sm font-medium text-[#5a524a] tracking-tight line-clamp-2 leading-snug">
             {product.name}
           </h3>
-          <p className="text-sm text-[#7e6961] italic">{product.category}</p>
+          <p className="text-xs text-[#800020] uppercase tracking-wider mt-1 font-medium">
+            {product.category}
+          </p>
         </div>
 
         <div className="mt-auto">
-          <div className="flex items-center justify-between mb-4">
-            <span className="text-xl font-bold text-[#970112]">
+          <div className="flex items-end justify-between mb-2">
+            <span className="text-base font-semibold text-[#800020]">
               ₹{product.price.toLocaleString()}
             </span>
             {product.originalPrice && (
-              <span className="text-sm text-[#7e6961] line-through">
+              <span className="text-xs text-[#D2B48C] line-through">
                 ₹{product.originalPrice.toLocaleString()}
               </span>
             )}
           </div>
 
-          <button
+          <motion.button
+            whileHover={{ 
+              backgroundColor: "#600018",
+              transition: { duration: 0.15 }
+            }}
+            whileTap={{ scale: 0.98 }}
             onClick={handleAddToCart}
-            className="w-full bg-[#550b14] hover:bg-[#7e6961] text-[#cbc0b2] py-2 px-3 rounded-lg transition-colors duration-300 font-medium text-sm"
+            className="w-full bg-[#800020] text-[#F8F4E9] py-2 px-2 rounded text-xs font-medium tracking-wide"
           >
             Add to Cart
-          </button>
+          </motion.button>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

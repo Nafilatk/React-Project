@@ -3,6 +3,8 @@ import axios from "axios";
 import ProductCard from "../components/ProductCard";
 import { toast } from "react-toastify";
 import { AuthContext } from "../context/AuthContext";
+import { CartContext } from "../context/CartContext";
+import { motion } from "framer-motion";
 
 const Products = () => {
   const [products, setProducts] = useState([]);
@@ -13,6 +15,7 @@ const Products = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   const { user } = useContext(AuthContext);
+  const { addToCart } = useContext(CartContext);
 
   const categories = [
     "All",
@@ -21,7 +24,6 @@ const Products = () => {
     "Shirts",
     "Jackets",
     "Casual Dresses",
-    
   ];
 
   useEffect(() => {
@@ -64,59 +66,65 @@ const Products = () => {
     setDisplayed(filtered);
   }, [search, category, sort, products]);
 
-  const handleAddToCart = async (product) => {
+  const handleAddToCart = (product) => {
     if (!user) {
       toast.error("Please login to add items to cart");
       return;
     }
-
-    try {
-      const res = await axios.get(`http://localhost:5000/users/${user.id}`);
-      const existingCart = res.data.cart || [];
-
-      const alreadyInCart = existingCart.find((item) => item.id === product.id);
-      if (alreadyInCart) {
-        toast.info("Item already in cart");
-        return;
-      }
-
-      const updatedCart = [...existingCart, { ...product, quantity: 1 }];
-
-      await axios.patch(`http://localhost:5000/users/${user.id}`, {
-        cart: updatedCart,
-      });
-
-      toast.success(`${product.name} added to cart!`);
-    } catch (error) {
-      console.error("Error adding to cart", error);
-      toast.error("Failed to add item to cart");
-    }
+    addToCart(product);
   };
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-[#cbc0b2] flex items-center justify-center">
-        <div className="animate-pulse text-[#550b14] text-xl">Loading glamorous fashion...</div>
-      </div>
+      <motion.div 
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        className="min-h-screen bg-[#F8F4E9] flex items-center justify-center"
+      >
+        <motion.div
+          animate={{ scale: [1, 1.05, 1] }}
+          transition={{ duration: 1.5, repeat: Infinity }}
+          className="text-[#800020] text-xl"
+        >
+          Loading glamorous fashion...
+        </motion.div>
+      </motion.div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-[#cbc0b2] py-12 px-4 sm:px-6 lg:px-8">
-      {/* Page Header */}
-      <div className="max-w-7xl mx-auto mb-12 text-center">
-        <h1 className="text-4xl font-bold text-[#550b14] mb-4">GlamCart Collection</h1>
-        <p className="text-lg text-[#7e6961]">
-          Discover the latest trends in women's fashion
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.5 }}
+      className="min-h-screen bg-[#F8F4E9] py-12 px-4 sm:px-6 lg:px-8"
+    >
+      <motion.div 
+        initial={{ y: -20 }}
+        animate={{ y: 0 }}
+        transition={{ duration: 0.5 }}
+        className="max-w-7xl mx-auto mb-12 text-center"
+      >
+        <h1 className="text-4xl font-bold text-[#800020] mb-4 font-serif">
+          GlamCart Collection
+        </h1>
+        <p className="text-lg text-[#D2B48C] font-medium">
+          Timeless elegance in every piece
         </p>
-      </div>
+      </motion.div>
 
-      {/* Filters Section */}
-      <div className="max-w-7xl mx-auto mb-12">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 bg-[#181817] p-6 rounded-lg shadow-lg">
-          {/* Search Input */}
-          <div>
-            <label htmlFor="search" className="block text-sm font-medium text-[#cbc0b2] mb-2">
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5, delay: 0.2 }}
+        className="max-w-7xl mx-auto mb-12"
+      >
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 bg-[#F8F4E9] p-6 rounded-lg shadow-sm border border-[#D2B48C]">
+          <motion.div whileHover={{ scale: 1.02 }}>
+            <label
+              htmlFor="search"
+              className="block text-sm font-medium text-[#5a524a] mb-2"
+            >
               Search
             </label>
             <input
@@ -125,75 +133,98 @@ const Products = () => {
               placeholder="Find your perfect outfit..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="w-full px-4 py-2 rounded border border-[#7e6961] bg-[#181817] text-[#cbc0b2] focus:ring-2 focus:ring-[#550b14] focus:outline-none transition-all"
+              className="w-full px-4 py-2 rounded border border-[#D2B48C] bg-white text-[#5a524a] focus:ring-2 focus:ring-[#800020] focus:outline-none transition-all"
             />
-          </div>
+          </motion.div>
 
-          {/* Category Filter */}
-          <div>
-            <label htmlFor="category" className="block text-sm font-medium text-[#cbc0b2] mb-2">
+          <motion.div whileHover={{ scale: 1.02 }}>
+            <label
+              htmlFor="category"
+              className="block text-sm font-medium text-[#5a524a] mb-2"
+            >
               Category
             </label>
             <select
               id="category"
               value={category}
               onChange={(e) => setCategory(e.target.value)}
-              className="w-full px-4 py-2 rounded border border-[#7e6961] bg-[#181817] text-[#cbc0b2] focus:ring-2 focus:ring-[#550b14] focus:outline-none transition-all"
+              className="w-full px-4 py-2 rounded border border-[#D2B48C] bg-white text-[#5a524a] focus:ring-2 focus:ring-[#800020] focus:outline-none transition-all"
             >
               {categories.map((cat) => (
-                <option key={cat} value={cat} className="bg-[#181817]">
+                <option key={cat} value={cat} className="bg-white">
                   {cat}
                 </option>
               ))}
             </select>
-          </div>
+          </motion.div>
 
-          {/* Sort Filter */}
-          <div>
-            <label htmlFor="sort" className="block text-sm font-medium text-[#cbc0b2] mb-2">
+          <motion.div whileHover={{ scale: 1.02 }}>
+            <label
+              htmlFor="sort"
+              className="block text-sm font-medium text-[#5a524a] mb-2"
+            >
               Sort By
             </label>
             <select
               id="sort"
               value={sort}
               onChange={(e) => setSort(e.target.value)}
-              className="w-full px-4 py-2 rounded border border-[#7e6961] bg-[#181817] text-[#cbc0b2] focus:ring-2 focus:ring-[#550b14] focus:outline-none transition-all"
+              className="w-full px-4 py-2 rounded border border-[#D2B48C] bg-white text-[#5a524a] focus:ring-2 focus:ring-[#800020] focus:outline-none transition-all"
             >
               <option value="">Recommended</option>
               <option value="lowToHigh">Price: Low to High</option>
               <option value="highToLow">Price: High to Low</option>
             </select>
-          </div>
+          </motion.div>
         </div>
-      </div>
+      </motion.div>
 
-      {/* Products Grid - 4 cards per row */}
       {displayed.length === 0 ? (
-        <div className="max-w-7xl mx-auto text-center py-12">
-          <p className="text-xl text-[#550b14]">No products match your search.</p>
-          <button 
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          className="max-w-7xl mx-auto text-center py-12"
+        >
+          <p className="text-xl text-[#800020]">
+            No products match your search.
+          </p>
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
             onClick={() => {
               setSearch("");
               setCategory("All");
               setSort("");
             }}
-            className="mt-4 px-6 py-2 bg-[#550b14] text-[#cbc0b2] rounded-lg hover:bg-[#7e6961] transition-colors"
+            className="mt-4 px-6 py-2 bg-[#800020] text-[#F8F4E9] rounded-lg hover:bg-[#600018] transition-colors"
           >
             Reset Filters
-          </button>
-        </div>
+          </motion.button>
+        </motion.div>
       ) : (
-        <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-          {displayed.map((product) => (
-            <ProductCard
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ staggerChildren: 0.1 }}
+          className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
+        >
+          {displayed.map((product, index) => (
+            <motion.div
               key={product.id}
-              product={product}
-              onAddToCart={handleAddToCart}
-            />
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              whileHover={{ y: -5 }}
+            >
+              <ProductCard
+                product={product}
+                onAddToCart={handleAddToCart}
+              />
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       )}
-    </div>
+    </motion.div>
   );
 };
 

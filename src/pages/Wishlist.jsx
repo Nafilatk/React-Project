@@ -54,12 +54,12 @@ const Wishlist = () => {
     <motion.div 
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      className="min-h-[50vh] bg-[#cbc0b2] flex items-center justify-center"
+      className="min-h-[50vh] bg-[#E6D5C3] flex items-center justify-center"
     >
       <motion.div
         animate={{ scale: [1, 1.1, 1] }}
         transition={{ repeat: Infinity, duration: 1.5 }}
-        className="animate-pulse text-[#550b14] text-xl"
+        className="animate-pulse text-[#800020] text-xl"
       >
         Loading your wishlist...
       </motion.div>
@@ -71,7 +71,7 @@ const Wishlist = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
-      className="min-h-screen bg-[#cbc0b2] py-8 px-4 sm:px-6 lg:px-8"
+      className="min-h-screen bg-[#F5F0E8] py-8 px-4 sm:px-6 lg:px-8"
     >
       <div className="max-w-7xl mx-auto">
         <motion.div
@@ -79,14 +79,14 @@ const Wishlist = () => {
           animate={{ y: 0, opacity: 1 }}
           className="text-center mb-8"
         >
-          <h1 className="text-2xl md:text-3xl font-bold text-[#550b14] mb-3">
+          <h1 className="text-2xl md:text-3xl font-bold text-[#800020] mb-3">
             Your Wishlist
           </h1>
           <motion.div
             initial={{ scaleX: 0 }}
             animate={{ scaleX: 1 }}
             transition={{ duration: 0.5 }}
-            className="w-16 h-1 bg-[#970112] mx-auto"
+            className="w-16 h-1 bg-[#800020] mx-auto"
           />
         </motion.div>
 
@@ -96,21 +96,21 @@ const Wishlist = () => {
               key="empty-wishlist"
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
-              className="bg-[#181817] rounded-lg p-8 text-center max-w-md mx-auto"
+              className="bg-[#E6D5C3] rounded-lg p-8 text-center max-w-md mx-auto border border-[#800020]/20"
             >
               <motion.div
                 animate={{ scale: [1, 1.1, 1] }}
                 transition={{ repeat: Infinity, duration: 2 }}
               >
-                <FiHeart className="mx-auto text-4xl text-[#7e6961] mb-4" />
+                <FiHeart className="mx-auto text-4xl text-[#800020] mb-4" />
               </motion.div>
-              <h3 className="text-lg text-[#cbc0b2] mb-2">Your wishlist is empty</h3>
-              <p className="text-[#7e6961] mb-4">Save your favorite items here for later</p>
+              <h3 className="text-lg text-[#800020] mb-2">Your wishlist is empty</h3>
+              <p className="text-[#800020]/80 mb-4">Save your favorite items here for later</p>
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => navigate('/products')}
-                className="bg-[#550b14] hover:bg-[#7e6961] text-[#cbc0b2] px-4 py-2 rounded-md transition-colors text-sm"
+                className="bg-[#800020] hover:bg-[#600018] text-[#F5F0E8] px-4 py-2 rounded-md transition-colors text-sm"
               >
                 Browse Products
               </motion.button>
@@ -131,7 +131,7 @@ const Wishlist = () => {
                   animate={{ y: 0, opacity: 1 }}
                   exit={{ opacity: 0 }}
                   whileHover={{ y: -5 }}
-                  className="bg-[#181817] rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-all group border border-[#7e6961]/20"
+                  className="bg-[#F5F0E8] rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-all group border border-[#E6D5C3]"
                 >
                   {/* Product Image */}
                   <motion.div 
@@ -150,15 +150,14 @@ const Wishlist = () => {
                   {/* Product Info */}
                   <div className="p-3">
                     <h3 
-                      className="text-md font-semibold text-[#cbc0b2] mb-1 truncate cursor-pointer"
+                      className="text-md font-semibold text-[#333] mb-1 truncate cursor-pointer"
                       onClick={() => handleProductClick(product.id)}
                     >
                       {product.name}
                     </h3>
-                    <p className="text-xs text-[#7e6961] italic mb-1">{product.category}</p>
-                    <p className="text-lg font-bold text-[#970112] mb-2">₹{product.price}</p>
+                    <p className="text-xs text-[#800020]/80 italic mb-1">{product.category}</p>
+                    <p className="text-lg font-bold text-[#800020] mb-2">₹{product.price}</p>
 
-                    {/* Action Buttons */}
                     <div className="flex gap-2">
                       <motion.button
                         whileHover={{ scale: 1.05 }}
@@ -167,7 +166,7 @@ const Wishlist = () => {
                           e.stopPropagation();
                           handleMoveToCart(product);
                         }}
-                        className="flex-1 bg-[#550b14] hover:bg-[#7e6961] text-[#cbc0b2] py-1 px-2 rounded-md text-xs flex items-center justify-center gap-1 transition-colors"
+                        className="flex-1 bg-[#800020] hover:bg-[#600018] text-[#F5F0E8] py-1 px-2 rounded-md text-xs flex items-center justify-center gap-1 transition-colors"
                       >
                         <FiShoppingBag size={14} /> Add to Cart
                       </motion.button>
@@ -178,7 +177,7 @@ const Wishlist = () => {
                           e.stopPropagation();
                           removeFromWishlist(product.id);
                         }}
-                        className="w-8 h-8 flex items-center justify-center border border-[#7e6961] text-[#7e6961] hover:bg-[#550b14] hover:border-[#550b14] hover:text-[#cbc0b2] rounded-md transition-colors"
+                        className="w-8 h-8 flex items-center justify-center border border-[#800020] text-[#800020] hover:bg-[#800020] hover:text-[#F5F0E8] rounded-md transition-colors"
                         aria-label="Remove from wishlist"
                       >
                         <FiTrash2 size={14} />

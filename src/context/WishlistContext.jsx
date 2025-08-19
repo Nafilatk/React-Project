@@ -7,13 +7,11 @@ export const WishlistProvider = ({ children }) => {
   const [wishlist, setWishlist] = useState([]);
   const [user, setUser] = useState(null);
 
-  // 🔁 Keep user synced with localStorage
   useEffect(() => {
     const storedUser = JSON.parse(localStorage.getItem("user"));
     setUser(storedUser);
-  }, [localStorage.getItem("user")]); // force update if localStorage changes
+  }, []); 
 
-  // 🔃 Fetch wishlist from backend when user changes
   useEffect(() => {
     const fetchWishlist = async () => {
       if (!user) return;
@@ -28,7 +26,6 @@ export const WishlistProvider = ({ children }) => {
     fetchWishlist();
   }, [user]);
 
-  // ➕ Add to wishlist
   const addToWishlist = async (product) => {
     if (!user) return;
 
@@ -47,11 +44,10 @@ export const WishlistProvider = ({ children }) => {
 
       setWishlist(updatedWishlist);
     } catch (err) {
-      console.error("Failed to add to wishlist", err);
+      console.error("Failed to add wishlist", err);
     }
   };
 
-  // ❌ Remove from wishlist
   const removeFromWishlist = async (id) => {
     if (!user) return;
 
@@ -65,8 +61,7 @@ export const WishlistProvider = ({ children }) => {
       console.error("Failed to remove from wishlist", err);
     }
   };
-
-  // 🧹 Clear wishlist
+  //Clear 
   const clearWishlist = async () => {
     if (!user) return;
 
@@ -79,12 +74,11 @@ export const WishlistProvider = ({ children }) => {
       console.error("Failed to clear wishlist", err);
     }
   };
-
   return (
     <WishlistContext.Provider
       value={{
         wishlist,
-        setWishlist, // ✅ expose this for use in Wishlist.jsx
+        setWishlist, 
         addToWishlist,
         removeFromWishlist,
         clearWishlist,

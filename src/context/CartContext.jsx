@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useEffect, useState } from "react";
+import  { createContext, useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { AuthContext } from "./AuthContext";
 import { toast } from "react-toastify";
@@ -9,7 +9,6 @@ export const CartProvider = ({ children }) => {
   const { user } = useContext(AuthContext);
   const [cart, setCart] = useState([]);
   const [loading, setLoading] = useState(true);
-
   // Fetch user's cart from DB
   const loadCart = async () => {
     if (!user) return;
@@ -27,7 +26,6 @@ export const CartProvider = ({ children }) => {
   useEffect(() => {
     loadCart();
   }, [user]);
-
   // Sync cart to DB
   const syncCartToDB = async (updatedCart) => {
     try {
@@ -38,7 +36,6 @@ export const CartProvider = ({ children }) => {
       toast.error("Cart update failed");
     }
   };
-
   // Add to Cart
   const addToCart = async (product) => {
     const exists = cart.find((item) => item.id === product.id);
@@ -46,13 +43,11 @@ export const CartProvider = ({ children }) => {
       toast.info("Item already in cart");
       return;
     }
-
     const updatedCart = [...cart, { ...product, quantity: 1 }];
     setCart(updatedCart);
     syncCartToDB(updatedCart);
     toast.success("Added to cart!");
   };
-
   // Remove from cart
   const removeFromCart = (id) => {
     const updatedCart = cart.filter((item) => item.id !== id);
@@ -60,14 +55,12 @@ export const CartProvider = ({ children }) => {
     syncCartToDB(updatedCart);
     toast.success("Removed from cart");
   };
-
   // Clear cart
   const clearCart = () => {
     setCart([]);
     syncCartToDB([]);
     toast.success("Cart cleared");
   };
-
   // Increment
   const incrementQty = (id) => {
     const updatedCart = cart.map((item) =>
@@ -76,7 +69,6 @@ export const CartProvider = ({ children }) => {
     setCart(updatedCart);
     syncCartToDB(updatedCart);
   };
-
   // Decrement
   const decrementQty = (id) => {
     const updatedCart = cart
@@ -90,13 +82,11 @@ export const CartProvider = ({ children }) => {
     setCart(updatedCart);
     syncCartToDB(updatedCart);
   };
-
   // Total Price
   const totalPrice = cart.reduce(
     (total, item) => total + item.price * item.quantity,
     0
   );
-
   return (
     <CartContext.Provider
       value={{

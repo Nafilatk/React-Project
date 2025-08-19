@@ -3,38 +3,229 @@
     {
       "id": "1",
       "name": "Admin",
-      "email": "admin@example.com",
-      "password": "admin123",
+      "email": "naaff7@gmail.com",
+      "password": "123456",
       "role": "admin",
       "isBlock": false,
       "cart": [],
       "orders": [],
       "wishlist": [],
-      "created_at": "2025-08-01T12:00:00Z"
+      "created_at": "2025-08-01T12:00:00Z",
+      "isBlocked": false,
+      "isActive": true
     },
     {
-      "id": "89d23cf1-416b-4aa5-9515-d797e23f88e7",
-      "name": "nafila",
-      "email": "nafilatk7@gmail.com",
-      "password": "0987654321",
-      "role": "user",
-      "isBlock": false,
-      "cart": [],
-      "wishlist": [],
-      "orders": [],
-      "created_at": "2025-08-07T07:12:59.355Z"
-    },
-    {
-      "id": "b5a40c89-05db-43f5-954b-d2feea0e504b",
-      "name": "nafila tk",
-      "email": "Nafilatk7@gmail.com",
+      "id": "422f49f9-77e7-47ea-8b26-0d6afef20250",
+      "name": "naseeha",
+      "email": "naseeha@gmail.com",
       "password": "123456",
       "role": "user",
       "isBlock": false,
       "cart": [],
       "wishlist": [],
+      "orders": [
+        {
+          "id": "t11",
+          "userId": "422f49f9-77e7-47ea-8b26-0d6afef20250",
+          "date": "2025-08-17T19:21:57.733Z",
+          "items": [
+            {
+              "id": "t11",
+              "name": "Casual Wear Top",
+              "price": 899,
+              "quantity": 1,
+              "image": "https://i.pinimg.com/736x/b7/08/65/b70865d528533ab8e934a486dabc36d5.jpg",
+              "category": "Casual Dresses"
+            }
+          ],
+          "total": 899,
+          "shippingAddress": "qwertyuiuytre",
+          "paymentMethod": "Credit Card",
+          "status": "Shipped"
+        },
+        {
+          "id": "1755460486772",
+          "userId": "422f49f9-77e7-47ea-8b26-0d6afef20250",
+          "date": "2025-08-17T19:40:49.535Z",
+          "items": [
+            {
+              "id": "t6",
+              "name": "Formal Buttoned Top",
+              "price": 1199,
+              "quantity": 1,
+              "image": "https://i.pinimg.com/1200x/64/eb/4d/64eb4d69346a3a47f5ae2af45e0a5d78.jpg",
+              "category": "Tops"
+            }
+          ],
+          "total": 1199,
+          "shippingAddress": "omanoor",
+          "paymentMethod": "Credit Card",
+          "status": "Shipped"
+        },
+        {
+          "id": "1755460486882",
+          "userId": "422f49f9-77e7-47ea-8b26-0d6afef20250",
+          "date": "2025-08-18T06:28:38.707Z",
+          "items": [
+            {
+              "id": "t6",
+              "name": "Formal Buttoned Top",
+              "price": 1199,
+              "quantity": 1,
+              "image": "https://i.pinimg.com/1200x/64/eb/4d/64eb4d69346a3a47f5ae2af45e0a5d78.jpg",
+              "category": "Tops",
+              "size": "XXL"
+            }
+          ],
+          "total": 1199,
+          "shippingAddress": "asfgh",
+          "paymentMethod": "Credit Card",
+          "status": "Processing"
+        },
+        {
+          "id": "17554604863456",
+          "userId": "422f49f9-77e7-47ea-8b26-0d6afef20250",
+          "date": "2025-08-18T08:21:26.175Z",
+          "items": [
+            {
+              "id": "t1",
+              "name": "Casual Cotton T-Shirt",
+              "price": 799,
+              "quantity": 1,
+              "image": "https://i.pinimg.com/736x/d8/e2/b4/d8e2b4f2717aa2b3cf4799a459d950d7.jpg",
+              "category": "T-Shirts"
+            }
+          ],
+          "total": 799,
+          "shippingAddress": "cvbnm",
+          "paymentMethod": "Credit Card",
+          "status": "Shipped"
+        },
+        {
+          "id": "175546048234",
+          "userId": "422f49f9-77e7-47ea-8b26-0d6afef20250",
+          "date": "2025-08-18T09:25:58.619Z",
+          "items": [
+            {
+              "id": "t14",
+              "name": "Casual Cotton T-Shirt",
+              "price": 799,
+              "quantity": 1,
+              "image": "https://i.pinimg.com/736x/7e/3f/cc/7e3fcce21dba59e77aab1815f48ce94f.jpg",
+              "category": "T-Shirts"
+            }
+          ],
+          "total": 799,
+          "shippingAddress": "asdfgllkjhgcx",
+          "paymentMethod": "Credit Card",
+          "status": "Delivered"
+        }
+      ],
+      "isActive": true,
+      "created_at": "2025-08-17T18:52:26.573Z"
+    },
+    {
+      "id": "d7965eeb-fee2-4b15-9867-8ec687642a27",
+      "name": "nafila tk ",
+      "email": "nafilatk7@gmail.com",
+      "password": "123456",
+      "role": "user",
+      "isBlock": false,
+      "cart": [],
+      "wishlist": [],
+      "orders": [
+        {
+          "id": "1755460482344",
+          "userId": "d7965eeb-fee2-4b15-9867-8ec687642a27",
+          "date": "2025-08-18T11:49:11.942Z",
+          "items": [
+            {
+              "id": "t2",
+              "name": "Stylish Shirt",
+              "price": 1299,
+              "quantity": 1,
+              "image": "https://i.pinimg.com/736x/8c/42/5d/8c425d49a79b94422629bfb38a3a0413.jpg",
+              "category": "Shirts"
+            }
+          ],
+          "total": 1299,
+          "shippingAddress": "aasdffbgnjnhgf",
+          "paymentMethod": "Credit Card",
+          "status": "Processing"
+        }
+      ],
+      "created_at": "2025-08-18T11:48:34.994Z"
+    },
+    {
+      "id": "c9c28c6d-0a77-4a0d-8e3a-09cf353e15ba",
+      "name": "fathima nasrin tk",
+      "email": "fathimanasrintk4@gmail.com",
+      "password": "1234546",
+      "role": "user",
+      "isBlock": false,
+      "cart": [],
+      "wishlist": [],
       "orders": [],
-      "created_at": "2025-08-07T09:37:36.067Z"
+      "created_at": "2025-08-18T14:19:15.715Z"
+    },
+    {
+      "id": "4889b41b-a7d5-44ea-9315-8ea36e6a0ea1",
+      "name": "nashva tk",
+      "email": "nashva@gmail.com",
+      "password": "123456",
+      "role": "user",
+      "isBlock": false,
+      "cart": [],
+      "wishlist": [],
+      "orders": [
+        {
+          "id": "1755460412233",
+          "userId": "4889b41b-a7d5-44ea-9315-8ea36e6a0ea1",
+          "date": "2025-08-18T17:55:15.923Z",
+          "items": [
+            {
+              "id": "t2",
+              "name": "Stylish Shirt",
+              "price": 1299,
+              "quantity": 2,
+              "image": "https://i.pinimg.com/736x/8c/42/5d/8c425d49a79b94422629bfb38a3a0413.jpg",
+              "category": "Shirts"
+            }
+          ],
+          "total": 2598,
+          "shippingAddress": "puthuvaparambath",
+          "paymentMethod": "Credit Card",
+          "status": "Processing"
+        },
+        {
+          "id": "17554604845643",
+          "userId": "4889b41b-a7d5-44ea-9315-8ea36e6a0ea1",
+          "date": "2025-08-18T17:55:54.779Z",
+          "items": [
+            {
+              "id": "t8",
+              "name": "Boho Casual Wear Top",
+              "price": 899,
+              "quantity": 1,
+              "image": "https://i.pinimg.com/1200x/ff/9b/6e/ff9b6eb065494ee98168dd0bc9867ab5.jpg",
+              "category": "Casual Dresses"
+            },
+            {
+              "id": "t4",
+              "name": "Black Top",
+              "price": 499,
+              "quantity": 1,
+              "image": "https://i.pinimg.com/736x/94/45/34/944534ea16aabbbb9cc6551d0e62a9ab.jpg",
+              "category": "Tops"
+            }
+          ],
+          "total": 1398,
+          "shippingAddress": "kondotty",
+          "paymentMethod": "Credit Card",
+          "status": "Processing"
+        }
+      ],
+      "created_at": "2025-08-18T17:54:29.655Z"
     }
   ],
   "products": [
@@ -43,7 +234,7 @@
       "name": "Casual Cotton T-Shirt",
       "description": "Soft and breathable cotton t-shirt perfect for daily wear.",
       "price": 799,
-      "count": 20,
+      "stock": 20,
       "category": "T-Shirts",
       "images": [
         "https://i.pinimg.com/736x/d8/e2/b4/d8e2b4f2717aa2b3cf4799a459d950d7.jpg"
@@ -56,7 +247,7 @@
       "name": "Stylish Shirt",
       "description": "Elegant formal shirt suitable for office or meetings.",
       "price": 1299,
-      "count": 10,
+      "stock": 10,
       "category": "Shirts",
       "images": [
         "https://i.pinimg.com/736x/8c/42/5d/8c425d49a79b94422629bfb38a3a0413.jpg"
@@ -69,7 +260,7 @@
       "name": "Stylish Top",
       "description": "Stylish floral printed top for casual outings.",
       "price": 999,
-      "count": 18,
+      "stock": 18,
       "category": "Tops",
       "images": [
         "https://i.pinimg.com/736x/70/96/16/7096160d9d3bc4805a754f90a24e4fb7.jpg"
@@ -82,7 +273,7 @@
       "name": "Black Top",
       "description": "Slim-fit black tank top with stretchable fabric.",
       "price": 499,
-      "count": 25,
+      "stock": 25,
       "category": "Tops",
       "images": [
         "https://i.pinimg.com/736x/94/45/34/944534ea16aabbbb9cc6551d0e62a9ab.jpg"
@@ -95,7 +286,7 @@
       "name": "Denim Jacket",
       "description": "Classic blue denim jacket for a bold look.",
       "price": 1699,
-      "count": 12,
+      "stock": 12,
       "category": "Jackets",
       "images": [
         "https://i.pinimg.com/1200x/be/c7/e7/bec7e75b0c35aebfba8af15e6958146b.jpg"
@@ -108,7 +299,7 @@
       "name": "Formal Buttoned Top",
       "description": "Formal top with buttoned design, ideal for work.",
       "price": 1199,
-      "count": 14,
+      "stock": 14,
       "category": "Tops",
       "images": [
         "https://i.pinimg.com/1200x/64/eb/4d/64eb4d69346a3a47f5ae2af45e0a5d78.jpg"
@@ -121,7 +312,7 @@
       "name": "Business Casual Dress",
       "description": "Formal dress with a modern business touch.",
       "price": 2099,
-      "count": 7,
+      "stock": 7,
       "category": "Casual Dresses",
       "images": [
         "https://i.pinimg.com/736x/15/87/a3/1587a3cada4bed2e620b87de426dc716.jpg"
@@ -134,7 +325,7 @@
       "name": "Boho Casual Wear Top",
       "description": "Chic boho style top perfect for casual hangouts.",
       "price": 899,
-      "count": 17,
+      "stock": 17,
       "category": "Casual Dresses",
       "images": [
         "https://i.pinimg.com/1200x/ff/9b/6e/ff9b6eb065494ee98168dd0bc9867ab5.jpg"
@@ -147,7 +338,7 @@
       "name": "Boho Casual Wear Top",
       "description": "Chic boho style top perfect for casual hangouts.",
       "price": 899,
-      "count": 17,
+      "stock": 17,
       "category": "Casual Dresses",
       "images": [
         "https://i.pinimg.com/1200x/d5/ed/a1/d5eda1aacac10c6f191d09cf997092e2.jpg"
@@ -160,7 +351,7 @@
       "name": "Denim Jacket",
       "description": "Classic blue denim jacket for a bold look.",
       "price": 1699,
-      "count": 12,
+      "stock": 12,
       "category": "Jackets",
       "images": [
         "https://i.pinimg.com/1200x/f4/9f/49/f49f490332ec32c30ccf6fd8fc4e5835.jpg"
@@ -173,7 +364,7 @@
       "name": "Casual Wear Top",
       "description": "Chic boho style top perfect for casual hangouts.",
       "price": 899,
-      "count": 17,
+      "stock": 17,
       "category": "Casual Dresses",
       "images": [
         "https://i.pinimg.com/736x/b7/08/65/b70865d528533ab8e934a486dabc36d5.jpg"
@@ -186,7 +377,7 @@
       "name": "Casual Wear Top",
       "description": "Chic boho style top perfect for casual hangouts.",
       "price": 899,
-      "count": 17,
+      "stock": 17,
       "category": "Casual Dresses",
       "images": [
         "https://i.pinimg.com/736x/5a/05/b6/5a05b6e06e1cf26b17b95eff818df7d5.jpg"
@@ -199,7 +390,7 @@
       "name": "Casual Cotton T-Shirt",
       "description": "Soft and breathable cotton t-shirt perfect for daily wear.",
       "price": 799,
-      "count": 20,
+      "stock": 20,
       "category": "T-Shirts",
       "images": [
         "https://i.pinimg.com/1200x/c3/2b/88/c32b885c89a588c48d39dd7e731eed62.jpg"
@@ -212,7 +403,7 @@
       "name": "Casual Cotton T-Shirt",
       "description": "Soft and breathable cotton t-shirt perfect for daily wear.",
       "price": 799,
-      "count": 20,
+      "stock": 20,
       "category": "T-Shirts",
       "images": [
         "https://i.pinimg.com/736x/7e/3f/cc/7e3fcce21dba59e77aab1815f48ce94f.jpg"
@@ -225,7 +416,7 @@
       "name": "Casual Cotton T-Shirt",
       "description": "Soft and breathable cotton t-shirt perfect for daily wear.",
       "price": 799,
-      "count": 20,
+      "stock": 20,
       "category": "T-Shirts",
       "images": [
         "https://i.pinimg.com/1200x/53/36/67/5336676baccaa1f8f5a4daceef85b83d.jpg"
@@ -238,7 +429,7 @@
       "name": "Formal Top",
       "description": "Formal top with buttoned design, ideal for work.",
       "price": 1199,
-      "count": 14,
+      "stock": 14,
       "category": "Tops",
       "images": [
         "https://i.pinimg.com/1200x/17/5b/4a/175b4a985e5c94d173be449155cc1a5f.jpg"
@@ -251,7 +442,7 @@
       "name": "Denim Jacket",
       "description": "Classic blue denim jacket for a bold look.",
       "price": 1699,
-      "count": 12,
+      "stock": 12,
       "category": "Jackets",
       "images": [
         "https://i.pinimg.com/736x/bf/a4/7d/bfa47d564ad45c45bc2a9dcf5f3ff39f.jpg"
@@ -264,7 +455,7 @@
       "name": "Stylish Shirt",
       "description": "Elegant formal shirt suitable for office or meetings.",
       "price": 1299,
-      "count": 10,
+      "stock": 10,
       "category": "Shirts",
       "images": [
         "https://i.pinimg.com/1200x/de/71/3c/de713cd72ad7fe7ff1d3df4ace8e2f79.jpg"
@@ -277,7 +468,7 @@
       "name": "Stylish Shirt",
       "description": "Elegant formal shirt suitable for office or meetings.",
       "price": 1299,
-      "count": 10,
+      "stock": 10,
       "category": "Shirts",
       "images": [
         "https://i.pinimg.com/1200x/77/e4/4c/77e44cea54192d0290c4d037595515ac.jpg"
@@ -290,7 +481,7 @@
       "name": "Denim Jacket",
       "description": "Classic blue denim jacket for a bold look.",
       "price": 1699,
-      "count": 12,
+      "stock": 12,
       "category": "Jackets",
       "images": [
         "https://i.pinimg.com/736x/9f/90/c7/9f90c76587ed244a3910861cf6ff8317.jpg"
@@ -303,13 +494,53 @@
       "name": "Stylish Shirt",
       "description": "Elegant formal shirt suitable for office or meetings.",
       "price": 1299,
-      "count": 10,
+      "stock": 10,
       "category": "Shirts",
       "images": [
         "https://i.pinimg.com/1200x/c8/bb/fe/c8bbfec3ad15891ee0018a432f431e1d.jpg"
       ],
       "isActive": true,
       "created_at": "2025-07-02T11:00:00Z"
+    },
+    {
+      "id": "t22",
+      "name": "Casual Cotton T-Shirt",
+      "description": "Soft and breathable cotton t-shirt perfect for daily wear.",
+      "price": 799,
+      "stock": 20,
+      "category": "T-Shirts",
+      "images": [
+        "https://i.pinimg.com/736x/d8/e2/b4/d8e2b4f2717aa2b3cf4799a459d950d7.jpg"
+      ],
+      "isActive": true,
+      "created_at": "2025-07-01T10:00:00Z"
+    },
+    {
+      "id": "t23",
+      "name": "Stylish Shirt",
+      "description": "Elegant formal shirt suitable for office or meetings.",
+      "price": 1299,
+      "stock": 10,
+      "category": "Shirts",
+      "images": [
+        "https://i.pinimg.com/736x/8c/42/5d/8c425d49a79b94422629bfb38a3a0413.jpg"
+      ],
+      "isActive": true,
+      "created_at": "2025-07-02T11:00:00Z"
+    },
+    {
+      "id": "855e",
+      "name": "Black Sweater",
+      "description": "Slim-fit black Sweater with stretchable fabric",
+      "price": "999",
+      "stock": "15",
+      "category": "T-Shirts",
+      "images": [
+        "        https://i.pinimg.com/736x/94/45/34/944534ea16aabbbb9cc6551d0e62a9ab.jpg"
+      ],
+      "isActive": true,
+      "created_at": "2025-07-02T11:00:00Z"
     }
-  ]
+  ],
+  "orders": []
 }

@@ -11,11 +11,12 @@ const Login = () => {
   const navigate = useNavigate();
   const [isSubmitting, setIsSubmitting] = useState(false);
 
+  // Color palette from screenshot
   const colors = {
-    dark: "#181817",
-    light: "#cbc0b2",
-    primary: "#970112",
-    secondary: "#7e6961",
+    tan: "#E6D5C3",
+    cream: "#F5F0E8",
+    burgundy: "#800020",
+    textDark: "#333333"
   };
 
   const [form, setForm] = useState({
@@ -57,6 +58,10 @@ const Login = () => {
       loginUser(user);
       toast.success("Login successful");
       navigate("/");
+
+      if (user.role === "admin") {
+        navigate("/admin/dashboard");
+      } 
     } catch (err) {
       toast.error("Login failed");
       console.error(err);
@@ -70,27 +75,32 @@ const Login = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
-      className={`min-h-screen flex items-center justify-center bg-[${colors.light}] p-4`}
+      className="min-h-screen flex items-center justify-center p-4"
+      style={{ backgroundColor: colors.cream }}
     >
       <motion.div
         initial={{ y: -20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ delay: 0.2 }}
-        className={`w-full max-w-md bg-[${colors.dark}] rounded-xl shadow-lg overflow-hidden p-8`}
+        className="w-full max-w-md rounded-xl overflow-hidden p-8"
+        style={{ 
+          backgroundColor: colors.cream,
+          border: `1px solid ${colors.tan}`
+        }}
       >
-        <motion.div
-          initial={{ scale: 0.9 }}
-          animate={{ scale: 1 }}
-          className="text-center mb-8"
-        >
-          <h2 className={`text-3xl font-bold text-[${colors.primary}] mb-2`}>
+        <motion.div className="text-center mb-8">
+          <h2 
+            className="text-3xl font-bold mb-2"
+            style={{ color: colors.burgundy }}
+          >
             Welcome Back
           </h2>
           <motion.div
             initial={{ scaleX: 0 }}
             animate={{ scaleX: 1 }}
             transition={{ delay: 0.4 }}
-            className={`h-1 w-20 mx-auto bg-[${colors.secondary}]`}
+            className="h-1 w-20 mx-auto"
+            style={{ backgroundColor: colors.tan }}
           />
         </motion.div>
 
@@ -101,14 +111,19 @@ const Login = () => {
             transition={{ delay: 0.3 }}
             className="relative"
           >
-            <FiMail className={`absolute left-3 top-3 text-[${colors.secondary}]`} />
+            <FiMail className="absolute left-3 top-3" style={{ color: colors.burgundy }} />
             <input
               type="email"
               name="email"
               placeholder="Email address"
               value={form.email}
               onChange={handleChange}
-              className={`w-full pl-10 pr-3 py-3 bg-[${colors.dark}] border border-[${colors.secondary}] rounded-lg text-[${colors.light}] focus:outline-none focus:ring-2 focus:ring-[${colors.primary}]`}
+              className="w-full pl-10 pr-3 py-3 rounded-lg focus:outline-none"
+              style={{ 
+                backgroundColor: colors.cream,
+                border: `1px solid ${colors.tan}`,
+                color: colors.textDark
+              }}
               required
             />
           </motion.div>
@@ -119,14 +134,19 @@ const Login = () => {
             transition={{ delay: 0.4 }}
             className="relative"
           >
-            <FiLock className={`absolute left-3 top-3 text-[${colors.secondary}]`} />
+            <FiLock className="absolute left-3 top-3" style={{ color: colors.burgundy }} />
             <input
               type="password"
               name="password"
               placeholder="Password"
               value={form.password}
               onChange={handleChange}
-              className={`w-full pl-10 pr-3 py-3 bg-[${colors.dark}] border border-[${colors.secondary}] rounded-lg text-[${colors.light}] focus:outline-none focus:ring-2 focus:ring-[${colors.primary}]`}
+              className="w-full pl-10 pr-3 py-3 rounded-lg focus:outline-none"
+              style={{ 
+                backgroundColor: colors.cream,
+                border: `1px solid ${colors.tan}`,
+                color: colors.textDark
+              }}
               required
             />
           </motion.div>
@@ -136,7 +156,11 @@ const Login = () => {
             whileTap={{ scale: 0.98 }}
             type="submit"
             disabled={isSubmitting}
-            className={`w-full py-3 bg-[${colors.primary}] hover:bg-[${colors.secondary}] text-[${colors.light}] rounded-lg font-semibold flex items-center justify-center gap-2 transition-colors`}
+            className="w-full py-3 rounded-lg font-semibold flex items-center justify-center gap-2"
+            style={{ 
+              backgroundColor: colors.burgundy,
+              color: colors.cream
+            }}
           >
             {isSubmitting ? (
               <>
@@ -159,13 +183,15 @@ const Login = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.6 }}
-          className={`text-sm text-center mt-6 text-[${colors.secondary}]`}
+          className="text-sm text-center mt-6"
+          style={{ color: colors.textDark }}
         >
           Don't have an account?{" "}
           <motion.span
             whileHover={{ scale: 1.05 }}
             onClick={() => navigate("/signup")}
-            className={`text-[${colors.primary}] cursor-pointer font-semibold inline-flex items-center gap-1`}
+            className="cursor-pointer font-semibold inline-flex items-center gap-1"
+            style={{ color: colors.burgundy }}
           >
             <FiUserPlus />
             Sign up
