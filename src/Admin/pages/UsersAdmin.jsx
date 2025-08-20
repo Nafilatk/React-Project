@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { FiTrash2, FiUserX, FiUserCheck } from 'react-icons/fi';
 import axios from 'axios';
+import { toast } from 'react-toastify';
 
 const UsersAdmin = () => {
   const colors = {
@@ -32,20 +33,30 @@ const UsersAdmin = () => {
   }, []);
 
   const toggleBlockUser = async (id, isBlock) => {
+    if (!window.confirm(`Are you sure you want to ${isBlock ? "unblock" : "block"} this user?`)) {
+      return;
+    }
     try {
       await axios.patch(`http://localhost:5000/users/${id}`, { isBlock: !isBlock });
       setUsers(users.map(user => user.id === id ? { ...user, isBlock: !isBlock } : user));
+      toast.success(`User ${isBlock ? "unblocked" : "blocked"} successfully`);
     } catch (err) {
       console.error(err);
+      toast.error("Action failed");
     }
   };
 
   const handleDelete = async (id) => {
+    if (!window.confirm("Are you sure you want to delete this user?")) {
+      return;
+    }
     try {
       await axios.delete(`http://localhost:5000/users/${id}`);
       setUsers(users.filter(user => user.id !== id));
+      toast.success("User deleted successfully");
     } catch (err) {
       console.error(err);
+      toast.error("Delete failed");
     }
   };
 

@@ -7,13 +7,12 @@ import { toast } from "react-toastify";
 import axios from "axios";
 import { FiUser, FiShoppingCart, FiHeart, FiLogIn, FiMenu, FiX, FiKey } from "react-icons/fi";
 
-// New Color Palette from screenshot
 const colors = {
-  tan: "#D2B48C",      // TAN
-  burgundy: "#800020",  // BURGUNDY
-  cream: "#F5F0E8",     // CREAM
-  textDark: "#333333",  // Dark text
-  textLight: "#FFFFFF"  // Light text
+  tan: "#D2B48C",   
+  burgundy: "#800020", 
+  cream: "#F5F0E8",    
+  textDark: "#333333",  
+  textLight: "#FFFFFF"  
 };
 
 const Navbar = () => {
@@ -27,6 +26,9 @@ const Navbar = () => {
   const [isUserDropdownOpen, setIsUserDropdownOpen] = useState(false);
   const [showPasswordModal, setShowPasswordModal] = useState(false);
   const [newPassword, setNewPassword] = useState("");
+  const [currentPassword, setCurrentPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+
 
   const cartCount = cart?.length || 0;
   const wishlistCount = wishlist?.length || 0;
@@ -44,67 +46,102 @@ const Navbar = () => {
       : "text-dark hover:text-burgundy";
   };
 
-  const handlePasswordChange = async () => {
-    if (!newPassword) {
-      toast.warn("Please enter a new password");
-      return;
-    }
 
-    try {
-      await axios.patch(`http://localhost:5000/users/${user.id}`, {
-        password: newPassword
-      });
-      toast.success("Password updated successfully!");
-      setShowPasswordModal(false);
-      setNewPassword("");
-    } catch (err) {
-      toast.error("Failed to update password");
-      console.error(err);
-    }
-  };
+const handlePasswordChange = async () => {
+  if (!currentPassword || !newPassword || !confirmPassword) {
+    toast.warn("Please fill all fields");
+    return;
+  }
+
+  if (currentPassword !== user.password) {
+    toast.error("Current password is incorrect");
+    return;
+  }
+
+  if (newPassword !== confirmPassword) {
+    toast.error("New password and confirm password do not match");
+    return;
+  }
+
+  try {
+    await axios.patch(`http://localhost:5000/users/${user.id}`, {
+      password: newPassword,
+    });
+    toast.success("Password updated successfully!");
+    setShowPasswordModal(false);
+    setCurrentPassword("");
+    setNewPassword("");
+    setConfirmPassword("");
+  } catch (err) {
+    toast.error("Failed to update password");
+    console.error(err);
+  }
+};
 
   return (
     <nav 
       className="sticky top-0 z-50 py-4 px-6 border-b"
       style={{ backgroundColor: colors.cream, borderColor: colors.tan }}
     >
-      {/* Password Change Modal */}
-      {showPasswordModal && (
-        <div className="fixed inset-0 bg-[#F5F0E8] bg-opacity-50 flex items-center justify-center z-50">
-          <div 
-            className="bg-cream p-6 rounded-lg max-w-md w-full border"
-            style={{ borderColor: colors.tan }}
-          >
-            <h3 className="text-xl font-bold mb-4" style={{ color: colors.burgundy }}>
-              Change Password
-            </h3>
-            <input
-              type="password"
-              placeholder="Enter new password"
-              className="w-full p-2 border rounded mb-4"
-              style={{ borderColor: colors.tan }}
-              value={newPassword}
-              onChange={(e) => setNewPassword(e.target.value)}
-            />
-            <div className="flex justify-end space-x-2">
-              <button 
-                onClick={() => setShowPasswordModal(false)}
-                className="px-4 py-2 rounded"
-                style={{ color: colors.textDark }}
-              >
-                Cancel
-              </button>
-              <button 
-                onClick={handlePasswordChange}
-                className="px-4 py-2 text-cream rounded"
-                style={{ backgroundColor: colors.burgundy }}
-              >
-                Update
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
+{showPasswordModal && (
+  <div className="fixed inset-0 bg-[#F5F0E8] bg-opacity-50 flex items-center justify-center z-50">
+    <div 
+      className="bg-cream p-6 rounded-lg max-w-md w-full border"
+      style={{ borderColor: colors.tan }}
+    >
+      <h3 className="text-xl font-bold mb-4" style={{ color: colors.burgundy }}>
+        Change Password
+      </h3>
+
+      {/* Current Password */}
+      <input
+        type="password"
+        placeholder="Enter current password"
+        className="w-full p-2 border rounded mb-4"
+        style={{ borderColor: colors.tan }}
+        value={currentPassword}
+        onChange={(e) => setCurrentPassword(e.target.value)}
+      />
+
+      {/* New Password */}
+      <input
+        type="password"
+        placeholder="Enter new password"
+        className="w-full p-2 border rounded mb-4"
+        style={{ borderColor: colors.tan }}
+        value={newPassword}
+        onChange={(e) => setNewPassword(e.target.value)}
+      />
+
+      {/* Confirm Password */}
+      <input
+        type="password"
+        placeholder="Confirm new password"
+        className="w-full p-2 border rounded mb-4"
+        style={{ borderColor: colors.tan }}
+        value={confirmPassword}
+        onChange={(e) => setConfirmPassword(e.target.value)}
+      />
+
+      <div className="flex justify-end space-x-2">
+        <button 
+          onClick={() => setShowPasswordModal(false)}
+          className="px-4 py-2 rounded"
+          style={{ color: colors.textDark }}
+        >
+          Cancel
+        </button>
+        <button 
+          onClick={handlePasswordChange}
+          className="px-4 py-2 text-cream rounded"
+          style={{ backgroundColor: colors.burgundy }}
+        >
+          Update
+        </button>
+      </div>
+    </div>
+  </div>
+)}
 
       <div className="max-w-6xl mx-auto flex justify-between items-center">
         <Link 
@@ -115,7 +152,6 @@ const Navbar = () => {
           GLAMCART
         </Link>
 
-        {/* Desktop Navigation */}
         <div className="hidden md:flex items-center space-x-6">
           <Link 
             to="/" 
@@ -210,7 +246,7 @@ const Navbar = () => {
                     style={{ color: colors.textDark }}
                   >
                     <FiKey className="mr-2" />
-                    Change Password
+                    Change Password 
                   </button>
                   <button
                     onClick={handleLogout}
@@ -247,7 +283,6 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Mobile Menu */}
       {isMobileMenuOpen && (
         <div 
           className="md:hidden absolute top-full left-0 right-0 z-40 py-4 px-6"

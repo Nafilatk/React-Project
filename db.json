@@ -7,7 +7,36 @@
       "password": "123456",
       "role": "admin",
       "isBlock": false,
-      "cart": [],
+      "cart": [
+        {
+          "id": "t2",
+          "name": "Stylish Shirt",
+          "description": "Elegant formal shirt suitable for office or meetings.",
+          "price": 1299,
+          "stock": 10,
+          "category": "Shirts",
+          "images": [
+            "https://i.pinimg.com/736x/8c/42/5d/8c425d49a79b94422629bfb38a3a0413.jpg"
+          ],
+          "isActive": true,
+          "created_at": "2025-07-02T11:00:00Z",
+          "quantity": 1
+        },
+        {
+          "id": "t17",
+          "name": "Denim Jacket",
+          "description": "Classic blue denim jacket for a bold look.",
+          "price": 1699,
+          "stock": 12,
+          "category": "Jackets",
+          "images": [
+            "https://i.pinimg.com/736x/bf/a4/7d/bfa47d564ad45c45bc2a9dcf5f3ff39f.jpg"
+          ],
+          "isActive": true,
+          "created_at": "2025-07-05T14:00:00Z",
+          "quantity": 1
+        }
+      ],
       "orders": [],
       "wishlist": [],
       "created_at": "2025-08-01T12:00:00Z",
@@ -231,12 +260,85 @@
       "id": "049af597-1090-41c2-9cff-8cd641fbafda",
       "name": "glama",
       "email": "glamacart@gmail.com",
-      "password": "nnnnnnnn",
+      "password": "123456",
       "role": "user",
       "isBlock": false,
       "cart": [],
       "wishlist": [],
-      "orders": [],
+      "orders": [
+        {
+          "userId": "049af597-1090-41c2-9cff-8cd641fbafda",
+          "date": "2025-08-19T08:34:01.498Z",
+          "items": [
+            {
+              "id": "t2",
+              "name": "Stylish Shirt",
+              "price": 1299,
+              "quantity": 1,
+              "image": "https://i.pinimg.com/736x/8c/42/5d/8c425d49a79b94422629bfb38a3a0413.jpg",
+              "category": "Shirts"
+            }
+          ],
+          "total": 1299,
+          "shippingAddress": "awsedrftyhujikjhgf",
+          "paymentMethod": "Credit Card",
+          "status": "Processing"
+        },
+        {
+          "userId": "049af597-1090-41c2-9cff-8cd641fbafda",
+          "date": "2025-08-20T04:36:28.743Z",
+          "items": [
+            {
+              "id": "t2",
+              "name": "Stylish Shirt",
+              "price": 1299,
+              "quantity": 1,
+              "image": "https://i.pinimg.com/736x/8c/42/5d/8c425d49a79b94422629bfb38a3a0413.jpg",
+              "category": "Shirts"
+            }
+          ],
+          "total": 1299,
+          "shippingAddress": "awsedrftyhujikjhgf",
+          "paymentMethod": "Credit Card",
+          "status": "Processing"
+        },
+        {
+          "userId": "049af597-1090-41c2-9cff-8cd641fbafda",
+          "date": "2025-08-20T04:37:21.438Z",
+          "items": [
+            {
+              "id": "t19",
+              "name": "Stylish Shirt",
+              "price": 1299,
+              "quantity": 1,
+              "image": "https://i.pinimg.com/1200x/77/e4/4c/77e44cea54192d0290c4d037595515ac.jpg",
+              "category": "Shirts"
+            }
+          ],
+          "total": 1299,
+          "shippingAddress": "awsedrftyhujikjhgf",
+          "paymentMethod": "Credit Card",
+          "status": "Processing"
+        },
+        {
+          "userId": "049af597-1090-41c2-9cff-8cd641fbafda",
+          "date": "2025-08-20T04:37:54.112Z",
+          "items": [
+            {
+              "id": "t16",
+              "name": "Formal Top",
+              "price": 1199,
+              "quantity": 1,
+              "image": "https://i.pinimg.com/1200x/17/5b/4a/175b4a985e5c94d173be449155cc1a5f.jpg",
+              "category": "Tops"
+            }
+          ],
+          "total": 1199,
+          "shippingAddress": "awsedrftyhujikjhgf",
+          "paymentMethod": "Credit Card",
+          "status": "Processing"
+        }
+      ],
       "created_at": "2025-08-19T05:01:23.420Z"
     },
     {
@@ -565,6 +667,5 @@
       "isActive": true,
       "created_at": "2025-07-02T11:00:00Z"
     }
-  ],
-  "orders": []
+  ]
 }

@@ -43,9 +43,15 @@ const ProductsAdmin = () => {
   }, []);
 
   const handleDelete = async (id) => {
+        if (!window.confirm("Are you sure you want to delete this user?")) {
+      return;
+    }
     try {
       await axios.delete(`http://localhost:5000/products/${id}`);
       fetchProducts();
+      
+      toast.success("User deleted successfully");
+
     } catch (err) {
       console.error(err);
     }
