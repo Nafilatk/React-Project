@@ -29,7 +29,6 @@ const Checkout = () => {
     setLoading(true);
     
     try {
-      // Create order data
       const orderData = {
         userId: user.id,
         date: new Date().toISOString(),
@@ -48,20 +47,16 @@ const Checkout = () => {
         status: "Processing"
       };
 
-      // First, get the current user data
       const userResponse = await axios.get(`http://localhost:5000/users/${user.id}`);
       const currentUser = userResponse.data;
       
-      // Update the user's orders array
       const updatedUser = {
         ...currentUser,
         orders: [...(currentUser.orders || []), orderData]
       };
 
-      // Save the updated user data back to the server
       await axios.put(`http://localhost:5000/users/${user.id}`, updatedUser);
       
-      // Clear cart and navigate to success page
       clearCart();
       navigate("/success");
       toast.success("Order placed successfully!");
@@ -73,7 +68,6 @@ const Checkout = () => {
     }
   };
 
-  // Color palette
   const colors = {
     tan: "#E6D5C3",
     cream: "#F5F0E8",
@@ -140,7 +134,6 @@ const Checkout = () => {
               </div>
             </div>
 
-            {/* Payment Information */}
             <div className="mb-6">
               <h2 className="text-xl font-semibold text-[#800020] mb-4 flex items-center gap-2">
                 <FiCreditCard /> Payment Method
@@ -178,7 +171,6 @@ const Checkout = () => {
               </div>
             </div>
 
-            {/* Order Summary */}
             <div className="mb-6">
               <h2 className="text-xl font-semibold text-[#800020] mb-4">Order Summary</h2>
               <div className="bg-white p-4 rounded-lg">
@@ -197,7 +189,6 @@ const Checkout = () => {
               </div>
             </div>
 
-            {/* Submit Button */}
             <button
               type="submit"
               disabled={loading}

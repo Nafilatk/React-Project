@@ -61,7 +61,6 @@ export const WishlistProvider = ({ children }) => {
       console.error("Failed to remove from wishlist", err);
     }
   };
-  //Clear 
   const clearWishlist = async () => {
     if (!user) return;
 
