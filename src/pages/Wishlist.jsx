@@ -133,7 +133,6 @@ const Wishlist = () => {
                   whileHover={{ y: -5 }}
                   className="bg-[#F5F0E8] rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-all group border border-[#E6D5C3]"
                 >
-                  {/* Product Image */}
                   <motion.div 
                     whileHover={{ scale: 1.05 }}
                     className="relative aspect-square overflow-hidden cursor-pointer"
@@ -147,7 +146,6 @@ const Wishlist = () => {
                     <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
                   </motion.div>
 
-                  {/* Product Info */}
                   <div className="p-3">
                     <h3 
                       className="text-md font-semibold text-[#333] mb-1 truncate cursor-pointer"

@@ -40,9 +40,6 @@ const App = () => {
       <Router>
         <div className="flex flex-col min-h-screen">
           <Routes>
-            {/* ------------------------ */}
-            {/* PUBLIC ROUTES */}
-            {/* ------------------------ */}
             <Route path="/" element={
               <>
                 <Navbar />
@@ -59,9 +56,6 @@ const App = () => {
               <Route path="success" element={<Success />} />
             </Route>
 
-            {/* ------------------------ */}
-            {/* PROTECTED USER ROUTES */}
-            {/* ------------------------ */}
             <Route path="/user" element={
               <ProtectedRoute>
                 <>
@@ -77,9 +71,6 @@ const App = () => {
               <Route path="orders" element={<Orders />} />
             </Route>
 
-            {/* ------------------------ */}
-            {/* ADMIN ROUTES */}
-            {/* ------------------------ */}
             <Route path="/admin" element={
               <ProtectedAdminRoute>
                 <AdminLayout />

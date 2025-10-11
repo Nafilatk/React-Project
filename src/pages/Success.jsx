@@ -6,16 +6,14 @@ import { FiCheckCircle, FiShoppingBag, FiHome, FiGift } from "react-icons/fi";
 const Success = () => {
   const [confetti, setConfetti] = useState([]);
   
-  // Updated color palette from screenshot
   const colors = {
-    tan: "#E6D5C3",       // TAN
-    burgundy: "#800020",   // BURGUNDY
-    cream: "#F5F0E8",      // CREAM
-    dark: "#181817",       // Keeping dark for text
+    tan: "#E6D5C3",       
+    burgundy: "#800020",   
+    cream: "#F5F0E8",     
+    dark: "#181817",      
   };
 
   useEffect(() => {
-    // Create confetti effect with new colors
     const newConfetti = Array.from({ length: 30 }).map((_, i) => ({
       id: i,
       x: Math.random() * 100,
@@ -32,7 +30,6 @@ const Success = () => {
       className="flex flex-col items-center justify-center min-h-screen text-center px-4" 
       style={{ backgroundColor: colors.cream }}
     >
-      {/* Confetti Animation */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
         {confetti.map((piece) => (
           <motion.div
@@ -58,7 +55,6 @@ const Success = () => {
         ))}
       </div>
 
-      {/* Main Content */}
       <motion.div
         initial={{ scale: 0.8, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
@@ -66,7 +62,6 @@ const Success = () => {
         className="relative p-8 rounded-2xl shadow-xl max-w-md w-full mx-4"
         style={{ backgroundColor: colors.dark }}
       >
-        {/* Success Icon */}
         <motion.div
           initial={{ scale: 0 }}
           animate={{ scale: 1 }}
@@ -100,7 +95,6 @@ const Success = () => {
           </span>
         </p>
 
-        {/* Action Buttons */}
         <div className="grid grid-cols-2 gap-4">
           <Link
             to="/products"
@@ -120,17 +114,16 @@ const Success = () => {
               backgroundColor: 'transparent',
               color: colors.cream,
               borderColor: colors.tan,
-              hover: { backgroundColor: `${colors.tan}20` } // 20% opacity
+              hover: { backgroundColor: `${colors.tan}20` } 
             }}
           >
             <FiHome /> Go Home
           </Link>
         </div>
 
-        {/* Bonus Offer */}
         <div 
           className="mt-8 pt-6"
-          style={{ borderTop: `1px solid ${colors.tan}30` }} // 30% opacity
+          style={{ borderTop: `1px solid ${colors.tan}30` }}
         >
           <div 
             className="flex items-center justify-center gap-2 mb-2"

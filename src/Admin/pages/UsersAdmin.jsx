@@ -39,7 +39,6 @@ const UsersAdmin = () => {
     try {
       await axios.patch(`http://localhost:5000/users/${id}`, { isBlock: !isBlock });
       setUsers(users.map(user => user.id === id ? { ...user, isBlock: !isBlock } : user));
-      toast.success(`User ${isBlock ? "unblocked" : "blocked"} successfully`);
     } catch (err) {
       console.error(err);
       toast.error("Action failed");
@@ -53,7 +52,6 @@ const UsersAdmin = () => {
     try {
       await axios.delete(`http://localhost:5000/users/${id}`);
       setUsers(users.filter(user => user.id !== id));
-      toast.success("User deleted successfully");
     } catch (err) {
       console.error(err);
       toast.error("Delete failed");

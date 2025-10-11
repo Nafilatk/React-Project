@@ -72,9 +72,9 @@ const OrdersAdmin = () => {
         prev.map((u) =>
           u.id === userId ? { ...u, orders: updatedOrders } : u
         )
+        
       );
 
-      toast.success("Order status updated");
     } catch (error) {
       console.error("Error updating order status:", error);
       toast.error("Failed to update status");
@@ -113,8 +113,9 @@ const OrdersAdmin = () => {
             onChange={(e) => setFilterStatus(e.target.value)}
             className="border rounded px-3 py-1 text-sm"
             style={{
-              borderColor: colors.green,
-              color: colors.gray,
+                        backgroundColor:colors.darkGreen,
+                        borderColor: colors.green,
+                        color:"whitesmoke",
             }}
           >
             <option value="All">All</option>
