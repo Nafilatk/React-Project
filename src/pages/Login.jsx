@@ -49,6 +49,8 @@ const Login = () => {
 
       const user = res.data[0];
 
+      
+
       if (user.isBlock) {
         toast.error("Your account has been blocked");
         return;
@@ -68,6 +70,8 @@ const Login = () => {
       setIsSubmitting(false);
     }
   };
+
+
 
   return (
     <motion.div
