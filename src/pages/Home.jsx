@@ -15,7 +15,6 @@ const staggeredAnimation = {
 };
 
 const Home = () => {
-  // Color palette from screenshot
   const colors = {
     tan: "#E6D5C3",
     cream: "#F5F0E8",

@@ -5,12 +5,10 @@ import { AuthContext } from '../context/AuthContext';
 const ProtectedRoute = ({ children }) => {
   const { user } = useContext(AuthContext);
 
-  // If no user, redirect to login
   if (!user) {
     return <Navigate to="/login" replace />;
   }
 
-  // If user is admin, redirect to admin dashboard
   if (user.role === 'admin') {
     return <Navigate to="/admin/dashboard" replace />;
   }

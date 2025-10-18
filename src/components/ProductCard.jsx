@@ -33,7 +33,6 @@ const ProductCard = ({ product, onAddToCart }) => {
       } else if (addToCart) {
         await addToCart(product);
       }
-      // toast.success(`${product.name} added to cart`);
     } catch (error) {
       toast.error("Failed to add item to cart");
       console.error("Add to cart error:", error);
@@ -51,10 +50,8 @@ const ProductCard = ({ product, onAddToCart }) => {
     try {
       if (isInWishlist) {
         await removeFromWishlist(product.id);
-        // toast.info("Removed from wishlist");
       } else {
         await addToWishlist(product);
-        // toast.success("Added to wishlist");
       }
     } catch (error) {
       toast.error("Failed to update wishlist");
@@ -110,7 +107,6 @@ const ProductCard = ({ product, onAddToCart }) => {
         </motion.button>
       </div>
 
-      {/* Product Info - Compact Layout */}
       <div className="p-3 flex-grow flex flex-col">
         <div className="mb-2">
           <h3 className="text-sm font-medium text-[#5a524a] tracking-tight line-clamp-2 leading-snug">

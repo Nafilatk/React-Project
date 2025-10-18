@@ -6,7 +6,7 @@ import { AuthProvider } from "./context/AuthContext";
 import { CartProvider } from "./context/CartContext";
 import { WishlistProvider } from "./context/WishlistContext";
 
-import "./index.css"; // if you have Tailwind or custom styles
+import "./index.css"; 
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

@@ -12,7 +12,6 @@ const Signup = () => {
   const navigate = useNavigate();
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  // Color palette from screenshot
   const colors = {
     tan: "#E6D5C3",
     cream: "#F5F0E8",
