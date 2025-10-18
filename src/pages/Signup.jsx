@@ -3,7 +3,7 @@ import axios from "axios";
 import { AuthContext } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import { v4 as uuid } from "uuid";
+import { v4 as uuid } from 'uuid';
 import { motion } from "framer-motion";
 import { FiUser, FiMail, FiLock, FiLogIn, FiArrowRight } from "react-icons/fi";
 
