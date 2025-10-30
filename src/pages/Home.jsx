@@ -34,7 +34,7 @@ const Home = () => {
         }}
       >
         <div className="absolute inset-0 z-0" style={{ backgroundColor: `${colors.burgundy}70` }} />
-        <motion.div 
+        <motion.div
           className="relative z-10"
           initial={{ x: -50, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
@@ -49,7 +49,7 @@ const Home = () => {
           <Link
             to="/products"
             className="px-6 sm:px-8 py-2 sm:py-3 rounded-full transition duration-300 text-sm sm:text-base"
-            style={{ 
+            style={{
               backgroundColor: colors.burgundy,
               color: colors.cream
             }}
@@ -80,9 +80,10 @@ const Home = () => {
         </motion.div>
 
         <div className="relative">
-          <div className="flex overflow-x-auto pb-8 hide-scrollbar">
-            <div className="flex space-x-6 px-4">
+          <div className="flex overflow-x-auto pb-8 scrollbar-hide">
+            <div className="flex space-x-6 px-4 animate-scroll">
               {[
+                // Original products
                 {
                   id: 1,
                   name: "Premium Denim Jacket",
@@ -117,6 +118,42 @@ const Home = () => {
                   price: 29.99,
                   image: "https://i.pinimg.com/736x/d8/e2/b4/d8e2b4f2717aa2b3cf4799a459d950d7.jpg",
                   category: "T-Shirts"
+                },
+                // Duplicate the same products for seamless loop
+                {
+                  id: 6,
+                  name: "Premium Denim Jacket",
+                  price: 89.99,
+                  image: "https://i.pinimg.com/1200x/f4/9f/49/f49f490332ec32c30ccf6fd8fc4e5835.jpg",
+                  category: "Jackets"
+                },
+                {
+                  id: 7,
+                  name: "Classic White Shirt",
+                  price: 49.99,
+                  image: "https://i.pinimg.com/1200x/de/71/3c/de713cd72ad7fe7ff1d3df4ace8e2f79.jpg",
+                  category: "Shirts"
+                },
+                {
+                  id: 8,
+                  name: "Floral Summer Dress",
+                  price: 65.99,
+                  image: "https://i.pinimg.com/736x/70/96/16/7096160d9d3bc4805a754f90a24e4fb7.jpg",
+                  category: "Dresses"
+                },
+                {
+                  id: 9,
+                  name: "Formal Office Top",
+                  price: 55.99,
+                  image: "https://i.pinimg.com/1200x/64/eb/4d/64eb4d69346a3a47f5ae2af45e0a5d78.jpg",
+                  category: "Tops"
+                },
+                {
+                  id: 10,
+                  name: "Casual Cotton T-Shirt",
+                  price: 29.99,
+                  image: "https://i.pinimg.com/736x/d8/e2/b4/d8e2b4f2717aa2b3cf4799a459d950d7.jpg",
+                  category: "T-Shirts"
                 }
               ].map((product, index) => (
                 <motion.div
@@ -124,7 +161,7 @@ const Home = () => {
                   initial={{ opacity: 0, x: 20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true, margin: "-50px" }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  transition={{ duration: 0.5, delay: (index % 5) * 0.1 }}
                   className="flex-shrink-0 w-64 sm:w-72 rounded-lg overflow-hidden shadow-lg"
                   style={{ backgroundColor: colors.tan }}
                   whileHover={{ y: -5 }}
@@ -136,9 +173,9 @@ const Home = () => {
                       className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
                     />
                     <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4">
-                      <span 
+                      <span
                         className="text-xs px-2 py-1 rounded-full"
-                        style={{ 
+                        style={{
                           backgroundColor: colors.burgundy,
                           color: colors.cream
                         }}
@@ -152,9 +189,28 @@ const Home = () => {
             </div>
           </div>
         </div>
+
+        <style>{`
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  .animate-scroll {
+    animation: scroll 40s linear infinite;
+  }
+  @keyframes scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(calc(-250px * 5));
+    }
+  }
+`}</style>
       </motion.section>
-
-
       <motion.section
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
@@ -237,7 +293,7 @@ const Home = () => {
           ))}
         </div>
       </motion.section>
-      
+
 
 
       <motion.section
@@ -249,7 +305,7 @@ const Home = () => {
         <p className="mb-6 sm:mb-8 text-sm sm:text-base" style={{ color: colors.textDark }}>
           Stay in touch for updates, offers, and nature-inspired fashion.
         </p>
-        
+
         <div className="flex flex-col sm:flex-row justify-center gap-4 sm:gap-6">
           <motion.a
             whileHover={{ scale: 1.05 }}
@@ -258,7 +314,7 @@ const Home = () => {
             target="_blank"
             rel="noopener noreferrer"
             className="px-4 sm:px-6 py-2 sm:py-3 rounded-full transition flex items-center justify-center gap-2 text-sm sm:text-base"
-            style={{ 
+            style={{
               backgroundColor: colors.burgundy,
               color: colors.cream
             }}
@@ -273,7 +329,7 @@ const Home = () => {
             target="_blank"
             rel="noopener noreferrer"
             className="px-4 sm:px-6 py-2 sm:py-3 rounded-full transition flex items-center justify-center gap-2 text-sm sm:text-base"
-            style={{ 
+            style={{
               backgroundColor: colors.burgundy,
               color: colors.cream
             }}
@@ -286,7 +342,7 @@ const Home = () => {
             whileTap={{ scale: 0.95 }}
             href="mailto:nafilatk7@gmail.com"
             className="px-4 sm:px-6 py-2 sm:py-3 rounded-full transition flex items-center justify-center gap-2 text-sm sm:text-base"
-            style={{ 
+            style={{
               backgroundColor: colors.burgundy,
               color: colors.cream
             }}

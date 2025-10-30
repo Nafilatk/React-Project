@@ -1,3 +1,4 @@
+import { lazy,Suspense } from "react";
 import { BrowserRouter as Router, Routes, Route, Navigate,Outlet } from "react-router-dom";
 import { AuthProvider } from "./context/AuthContext";
 import { ToastContainer } from "react-toastify";
@@ -11,29 +12,31 @@ import AdminLayout from "./Admin/AdminLayout";
 import ProtectedRoute from "./components/ProtectedRoute";
 import ProtectedAdminRoute from "./Admin/components/ProtectedAdminRoute";
 
-import Home from "./pages/Home";
-import About from "./pages/About";
-import Products from "./pages/Products";
-import ProductDetails from "./pages/ProductDetails";
-import Login from "./pages/Login";
-import Signup from "./pages/Signup";
-import Success from "./pages/Success";
+// Lazy load user pages
+const Home = lazy(() => import("./pages/Home"));
+const About = lazy(() => import("./pages/About"));
+const Products = lazy(() => import("./pages/Products"));
+const ProductDetails = lazy(() => import("./pages/ProductDetails"));
+const Login = lazy(() => import("./pages/Login"));
+const Signup = lazy(() => import("./pages/Signup"));
+const Success = lazy(() => import("./pages/Success"));
+const Wishlist = lazy(() => import("./pages/Wishlist"));
+const Cart = lazy(() => import("./pages/Cart"));
+const Checkout = lazy(() => import("./pages/Checkout"));
+const Orders = lazy(() => import("./pages/Orders"));
 
-import Wishlist from "./pages/Wishlist";
-import Cart from "./pages/Cart";
-import Checkout from "./pages/Checkout";
-import Orders from "./pages/Orders";
-
-import Dashboard from "./Admin/pages/Dashboard";
-import ProductsAdmin from "./Admin/pages/ProductsAdmin";
-import OrdersAdmin from "./Admin/pages/OrdersAdmin";
-import UsersAdmin from "./Admin/pages/UsersAdmin";
+// Lazy load admin pages
+const Dashboard = lazy(() => import("./Admin/pages/Dashboard"));
+const ProductsAdmin = lazy(() => import("./Admin/pages/ProductsAdmin"));
+const OrdersAdmin = lazy(() => import("./Admin/pages/OrdersAdmin"));
+const UsersAdmin = lazy(() => import("./Admin/pages/UsersAdmin"));
 
 const App = () => {
   return (
     <AuthProvider>
       <Router>
         <div className="flex flex-col min-h-screen">
+          <Suspense fallback={<div className="text-center py-10">Loading...</div>}>
           <Routes>
             <Route path="/" element={
               <>
@@ -84,6 +87,8 @@ const App = () => {
             
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
+
+          </Suspense>
 
           <ToastContainer 
             position="top-right"

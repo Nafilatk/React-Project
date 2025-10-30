@@ -64,15 +64,15 @@ const ProductCard = ({ product, onAddToCart }) => {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       whileHover={{ 
-        y: -5,
+        y: -3,
         transition: { duration: 0.2 }
       }}
       className="bg-[#F8F4E9] rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 group relative h-full flex flex-col border border-[#D2B48C] cursor-pointer"
       onClick={handleCardClick}
     >
       {product.onSale && (
-        <div className="absolute top-3 left-0 bg-[#800020] text-[#F8F4E9] px-2 py-1 text-xs font-medium tracking-wider z-10">
-          <div className="absolute left-0 bottom-[-6px] w-0 h-0 border-l-[6px] border-l-transparent border-t-[6px] border-t-[#600018]"></div>
+        <div className="absolute top-2 left-0 bg-[#800020] text-[#F8F4E9] px-2 py-0.5 text-[10px] font-medium tracking-wider z-10">
+          <div className="absolute left-0 bottom-[-4px] w-0 h-0 border-l-[4px] border-l-transparent border-t-[4px] border-t-[#600018]"></div>
           SALE
         </div>
       )}
@@ -92,7 +92,7 @@ const ProductCard = ({ product, onAddToCart }) => {
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
           onClick={handleWishlist}
-          className={`absolute top-2 right-2 p-1.5 rounded-full ${
+          className={`absolute top-1.5 right-1.5 p-1 rounded-full ${
             isInWishlist 
               ? "bg-[#800020] text-[#F8F4E9]"
               : "bg-[#F8F4E9] text-[#D2B48C] hover:bg-[#800020] hover:text-[#F8F4E9]"
@@ -100,30 +100,30 @@ const ProductCard = ({ product, onAddToCart }) => {
           aria-label={isInWishlist ? "Remove from wishlist" : "Add to wishlist"}
         >
           {isInWishlist ? (
-            <AiFillHeart size={18} className="text-current" />
+            <AiFillHeart size={14} className="text-current" />
           ) : (
-            <AiOutlineHeart size={18} className="text-current" />
+            <AiOutlineHeart size={14} className="text-current" />
           )}
         </motion.button>
       </div>
 
-      <div className="p-3 flex-grow flex flex-col">
-        <div className="mb-2">
-          <h3 className="text-sm font-medium text-[#5a524a] tracking-tight line-clamp-2 leading-snug">
+      <div className="p-2 flex-grow flex flex-col">
+        <div className="mb-1">
+          <h3 className="text-xs font-medium text-[#5a524a] tracking-tight line-clamp-2 leading-snug">
             {product.name}
           </h3>
-          <p className="text-xs text-[#800020] uppercase tracking-wider mt-1 font-medium">
+          <p className="text-[10px] text-[#800020] uppercase tracking-wider mt-0.5 font-medium">
             {product.category}
           </p>
         </div>
 
         <div className="mt-auto">
-          <div className="flex items-end justify-between mb-2">
-            <span className="text-base font-semibold text-[#800020]">
+          <div className="flex items-end justify-between mb-1.5">
+            <span className="text-sm font-semibold text-[#800020]">
               ₹{product.price.toLocaleString()}
             </span>
             {product.originalPrice && (
-              <span className="text-xs text-[#D2B48C] line-through">
+              <span className="text-[10px] text-[#D2B48C] line-through">
                 ₹{product.originalPrice.toLocaleString()}
               </span>
             )}
@@ -136,7 +136,7 @@ const ProductCard = ({ product, onAddToCart }) => {
             }}
             whileTap={{ scale: 0.98 }}
             onClick={handleAddToCart}
-            className="w-full bg-[#800020] text-[#F8F4E9] py-2 px-2 rounded text-xs font-medium tracking-wide"
+            className="w-full bg-[#800020] text-[#F8F4E9] py-1.5 px-2 rounded text-xs font-medium tracking-wide"
           >
             Add to Cart
           </motion.button>
